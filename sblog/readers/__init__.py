@@ -9,7 +9,7 @@ from sblog.namespace import NameSpace
 def render(post):
     container = NameSpace()
     container.meta = NameSpace()
-    raw_post = open(post).read()
+    raw_post = open(post).read().decode('utf-8')
     pattern = re.compile(r'\[meta\].*?\[\/meta\]', re.S)
     metas = pattern.findall(raw_post)[0].split('\n')
     for meta in metas:

@@ -25,5 +25,5 @@ def write(path, ns):
         result = tpl.render(site=ns.site, post=post)
         desti = os.path.join(path, post.meta.link)
         f = open(desti, 'w')
-        f.write(result)
+        f.write(result.encode('utf-8'))
         f.close()
