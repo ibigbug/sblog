@@ -18,6 +18,7 @@ def init():
     ns.root.version = version
     ns.site.site_name = config.site_name
     ns.site.author = config.author
+    ns.site.site_url = config.site_url
 
 
 def build():
@@ -43,16 +44,17 @@ def read():
     for dirpath, dirnames, raw_posts in os.walk('content'):
         for p in raw_posts:
             post = readers.render(os.path.join(dirpath, p))
-            post.filename = os.path.splitext(p)[0] + '.html'
+            print 'reading %s' % os.path.split(p)[1]
+            post.meta.link = os.path.splitext(p)[0] + '.html'
             ns.context.append(post)
     return
 
 
 def write():
     print 'writing...'
-    for post in ns.context:
-        path = os.path.join(ns.root.deploy, post.filename + '')
-        writers.write(path, post, ns)
+    #for post in ns.context:
+    path = os.path.join(ns.root.deploy)
+    writers.write(path, ns)
 
 
 def main():

@@ -24,5 +24,4 @@ def render(post):
     )
     raw_content = raw_post.split('[/meta]')[1]
     container.content = md.convert(raw_content)
-    print container.content
     return container

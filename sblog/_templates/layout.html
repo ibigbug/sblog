@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>{{ site.site_name }}</title>
+</head>
+<body>
+    <header id="header">
+        <a href="{{ site.site_url }}"><span class="logo">{{ site.site_name }}</span></a>
+    </header>
+    <div class="wrap">
+        {% block content %}{% endblock %}
+    </div>
+    <footer id="footer">
+    </footer>
+</body>
+</html>
