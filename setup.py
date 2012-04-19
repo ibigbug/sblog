@@ -15,7 +15,7 @@ setup(
     url='http://blog.xiaoba.me',
     packages=['sblog', 'sblog.writers', 'sblog.readers'],
     description='A lightweight static weblog generator',
-    long_description=open('readme').read(),
+    long_description=open('README.mkd').read(),
     license='BSD License',
     entry_points={
         'console_scripts': ['sblog= sblog.main:main'],

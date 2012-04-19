@@ -5,4 +5,4 @@
 
 site_name = 'site_name'
 author = 'author'
-site_url = 'http://127.0.0.1'
+site_url = 'http://127.0.0.1:8000'
