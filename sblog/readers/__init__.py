@@ -28,7 +28,7 @@ def render(ns, NameSpace):
                 lexer = TextLexer()
             code = highlight(m.group(2), lexer, formatter)
             code = code.replace('\n', '<br />')
-        raw_post = pyg_pattern.sub(code, raw_post)
+            raw_post = pyg_pattern.sub(code, raw_post)
         mkd_pattern = re.compile(r'\[meta\].*?\[\/meta\]', re.S)
         metas = mkd_pattern.findall(raw_post)[0].split('\n')
         #get meta
