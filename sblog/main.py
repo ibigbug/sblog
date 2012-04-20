@@ -5,34 +5,52 @@ import os
 import shutil
 
 from sblog import __version__ as version
-from namespace import ns
+from namespace import ns, NameSpace
 import readers
 import writers
-import config
+import ConfigParser
 
 
 def init():
     ns.root.path = os.path.dirname(__file__)
+    ns.root.version = version
     ns.root.template_dir = os.path.join(os.path.dirname(__file__),
                                         '_templates')
-    ns.root.version = version
-    ns.site.site_name = config.site_name
-    ns.site.author = config.author
-    ns.site.site_url = config.site_url
+    ns.root.static_dir = os.path.join(os.path.dirname(__file__), '_static')
+    ns.site.proj_dir = os.getcwd()
+
+
+def pre_read():
+    cf = ConfigParser.ConfigParser()
+    config = os.path.join(ns.site.proj_dir, 'config.ini')
+    cf.read(config)
+
+    ns.site.site_name = cf.get('basic', 'site_name')
+    ns.site.author = cf.get('basic', 'author')
+    ns.site.site_url = cf.get('basic', 'site_url')
+    ns.site.content = os.path.join(os.getcwd(), 'content')
+    ns.site.deploy = os.path.join(os.getcwd(), 'deploy')
+    try:
+        ns.context.ga = cf.get('extra', 'ga')
+    except:
+        ns.context.ga = None
+    try:
+        ns.context.disqus = cf.get('extra', 'disqus')
+    except:
+        ns.context.disqus = None
 
 
 def build():
-    if 'config.py' in os.listdir('.'):
+    if 'config.ini' in os.listdir('.'):
+        pre_read()
         read()
         write()
+        gene_static()
     else:
         s = raw_input("build an environment?(y/n):")
         if s != 'n':
-            shutil.copyfile(os.path.join(ns.root.path, 'config.py'),
-                            'config.py')
-            shutil.copytree(os.path.join(ns.root.path, '_static'), '_static')
-            shutil.copytree(os.path.join(ns.root.path, '_templates'),
-                            '_templates')
+            shutil.copyfile(os.path.join(ns.root.path, 'config.ini'),
+                            'config.ini')
             os.mkdir('content')
             os.mkdir('deploy')
             print 'build finished'
@@ -41,20 +59,21 @@ def build():
 
 def read():
     print 'reading...'
-    for dirpath, dirnames, raw_posts in os.walk('content'):
-        for p in raw_posts:
-            post = readers.render(os.path.join(dirpath, p))
-            print 'reading %s' % os.path.split(p)[1]
-            post.meta.link = os.path.splitext(p)[0] + '.html'
-            ns.context.append(post)
-    return
+    readers.render(ns, NameSpace)
 
 
 def write():
     print 'writing...'
-    #for post in ns.context:
-    path = os.path.join(ns.root.deploy)
-    writers.write(path, ns)
+    writers.write(ns)
+
+
+def gene_static():
+    desti_static = os.path.join(ns.site.deploy, 'static')
+    if os.path.exists(desti_static):
+        print 'removing old static files...'
+        shutil.rmtree(desti_static)
+    print 'generating new static files...'
+    shutil.copytree(ns.root.static_dir, desti_static)
 
 
 def main():

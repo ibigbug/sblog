@@ -1,4 +1,25 @@
 {% extends "layout.html" %}
 {% block content %}
-    {{ post.content }}
+<div class="entry">
+    <h1 class="entry-title"><a href="{{ site.site_url }}/{{ post.meta.link }}">{{ post.meta.title }}</a></h1>
+    <div class="entry-meta">
+        Published on
+        <time datetime="{{ post.meta.date }}">{{ post.meta.date }}</time>
+    </div>
+    <div class="entry-content">
+        {{ post.content }}
+    </div>
+    {% if context.disqus %}
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = '{{ context.disqus }}';
+        var disqus_title = '{{ post.meta.title }}';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    {% endif %}
+</div>
 {% endblock %}

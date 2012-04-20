@@ -17,8 +17,8 @@ class NameSpace(dict):
 
 ns = NameSpace()
 ns.root = NameSpace()
-ns.root.content = 'content'
-ns.root.deploy = 'deploy'
 ns.site = NameSpace()
-ns.context = []
-ns.folder = []
+ns.context = NameSpace()
+ns.context.folder = []
+ns.context.posts = []
+ns.struct = NameSpace() # for using in other method

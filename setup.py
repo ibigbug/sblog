@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup
-install_requires = ['markdown', 'Jinja2']
+install_requires = ['markdown', 'Jinja2', 'pygments']
 
 
 from sblog import __version__ as version

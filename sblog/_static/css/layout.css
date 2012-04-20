@@ -1,0 +1,118 @@
+html{color:#000;background:#fff;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+body,button,input,select,textarea{font:12px/1.5 tahoma,arial,"\5b8b\4f53";}
+form{margin:0;}
+fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}
+legend{border:0;*margin-left:-7px;}
+button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;}
+button,input{line-height:normal;}
+button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;*overflow:visible;}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+textarea{overflow:auto;vertical-align:top;}
+input,select,textarea{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+th{text-align:inherit;}
+fieldset,img{border:0;}
+iframe{display:block;}
+abbr,acronym{border:0;font-variant:normal;}
+del{text-decoration:line-through;}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500;margin:10px 0;}
+q:before,q:after{content:'';}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+a:hover{text-decoration:underline;}
+ins,a{text-decoration:none;}
+.fn-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.fn-clear{zoom:1;}
+body .fn-hide{display:none;}
+.fn-left,.fn-right{display:inline;}
+.fn-left{float:left;}
+.fn-right{float:right;}
+.fn-center{margin:0 auto;}
+.ft-center{text-align:center;}
+.ft-left{text-align:left;}
+.ft-right{text-align:right;}
+::selection{background:#cc3300;color:#fff;text-shadow:none;}
+.c,.cm,.c1{color:#0e6081;font-style:italic;}
+.err{color:#a61717;background-color:#e3d2d2;}
+.k{font-weight:bold;color:blue;}
+.o{font-weight:bold;}
+.cp{color:#999;font-weight:bold;}
+.cs{color:#999;font-weight:bold;font-style:italic;}
+.gd{color:#000;background-color:#ffdddd;}
+.gd .x{color:#000;background-color:#ffaaaa;}
+.ge{font-style:italic;}
+.gr{color:#aa0000;}
+.gh{color:#999999;}
+.gi{color:#000;background-color:#ddffdd;}
+.gi .x{color:#000;background-color:#aaffaa;}
+.go{color:#888888;}
+.gp{color:#555555;}
+.gs{font-weight:bold;}
+.gu{color:#aaaaaa;}
+.gt{color:#aa0000;}
+.kc{font-weight:bold;}
+.kd{font-weight:bold;}
+.kp{font-weight:bold;}
+.kr{font-weight:bold;}
+.kt{color:#445588;font-weight:bold;}
+.m{color:#009999;}
+.s{color:#dd1144;}
+.na{color:#008080;}
+.nb{color:#0086b3;}
+.nc{color:#445588;font-weight:bold;}
+.no{color:#008080;}
+.ni{color:#800080;}
+.ne{color:#900;font-weight:bold;}
+.nx{color:#900;font-weight:bold;}
+.nn{color:#555555;}
+.nt{color:#000080;}
+.nv{color:#008080;}
+.ow{font-weight:bold;}
+.w{color:#bbbbbb;}
+.mf{color:#009999;}
+.mh{color:#009999;}
+.mi{color:#009999;}
+.mo{color:#009999;}
+.sb{color:#dd1144;}
+.sc{color:#dd1144;}
+.sd{color:#dd1144;}
+.s2{color:#dd1144;}
+.se{color:#dd1144;}
+.sh{color:#dd1144;}
+.si{color:#dd1144;}
+.sx{color:#dd1144;}
+.sr{color:#009926;}
+.s1{color:#dd1144;}
+.ss{color:#990073;}
+.bp{color:#3f7700;}
+.vc{color:#008080;}
+.vg{color:#008080;}
+.vi{color:#008080;}
+.il{color:#009999;}
+html{background:white;}html body{text-align:center;}html body header#header{text-align:center;border-top:2px solid gray;border-bottom:1px solid #ddd;box-shadow:3px 3px #fff;}html body header#header nav#nav{margin:0 auto;text-align:right;max-width:600px;}html body header#header nav#nav ul li{display:inline-block;padding:3px 8px;}html body header#header nav#nav ul li a{color:gray;font-size:18px;}html body header#header nav#nav ul li a.current{color:black;}
+html body div.wrap{margin:0 auto;max-width:600px;text-align:left;}html body div.wrap header.entry-header h1{font-size:24px;font-weight:bold;}
+html body div.wrap ul.entry-list li{padding:20px 0 10px;border-bottom:1px solid #ddd;font-size:16px;}html body div.wrap ul.entry-list li a{color:gray;}html body div.wrap ul.entry-list li a:link,html body div.wrap ul.entry-list li a:visited,html body div.wrap ul.entry-list li a:active{color:gray;}
+html body div.wrap ul.entry-list li a:hover{color:black;}
+html body div.wrap ul.entry-list li div.entry-meta{text-align:right;font-size:12px;color:#ccc;}
+html body div.wrap div.entry h1.entry-title{font-size:24px;}html body div.wrap div.entry h1.entry-title a{color:black;}
+html body div.wrap div.entry div.entry-meta{border-top:1px double #ddd;border-bottom:1px double #ddd;padding:5px 0;}
+html body div.wrap div.entry div.entry-content{margin-top:20px;color:gray;font-size:14px;}html body div.wrap div.entry div.entry-content p{margin-bottom:12px;}
+html body div.wrap div.entry div.entry-content a{color:black;}html body div.wrap div.entry div.entry-content a:hover{color:black;}
+html body div.wrap div.entry div.entry-content div.highlight{border:1px dashed #ccc;padding:5px;}
+html body div.wrap div.entry div.entry-content h1,html body div.wrap div.entry div.entry-content h2,html body div.wrap div.entry div.entry-content h3,html body div.wrap div.entry div.entry-content h4,html body div.wrap div.entry div.entry-content h5,html body div.wrap div.entry div.entry-content h6{font-weight:bold;color:black;}
+html body div.wrap div.entry div.entry-content h1{font-size:20px;}
+html body div.wrap div.entry div.entry-content h2{font-size:18px;}
+html body div.wrap div.entry div.entry-content h3{font-size:16px;}
+html body div.wrap div.entry div.entry-content h4{font-size:14px;}
+html body div.wrap div.entry div.entry-content h5{font-size:12px;}
+html body div.wrap div.entry div.entry-content h6{font-size:20px;}
+html body footer#footer{max-width:600px;margin:0 auto;padding-top:40px;font-size:12px;text-align:right;}html body footer#footer p{color:#ccc;}html body footer#footer p .copyright{color:gray;}
+html body footer#footer p a{color:gray;}html body footer#footer p a:hover{color:black;}

@@ -1,9 +1,18 @@
 {% extends "layout.html" %}
 {% block content %}
-<ul>
-    {% for c in context %}
+<header class="entry-header">
+    <h1 class="entry-title">Articles {% if hilite != 'home' %}in {{ hilite.title() }} {% endif %}</h1>
+</header>
+<ul class="entry-list">
+    {% for p in posts %}
     <li>
-    <a href="{{ c.meta.link }}">{{ c.meta.title }}</a>
+    <a href="{{ site.site_url }}/{{ p.meta.link }}">{{ p.meta.title }}</a>
+    <div class="entry-meta">
+        Published on
+        <time class="publish-date" datetime="{{ p.meta.date }}">{{ p.meta.date }}</time>
+        by
+        <span class="author-name">{{ site.author }}</span>
+    </div>
     </li>
     {% endfor %}
 </ul>
