@@ -28,7 +28,7 @@ def render(ns, NameSpace):
                 lexer = TextLexer()
             code = highlight(m.group(2), lexer, formatter)
             code = code.replace('\n', '<br />')
-            raw_post = pyg_pattern.sub(code, raw_post)
+            raw_post = pyg_pattern.sub(code, raw_post).decode('utf-8')
         mkd_pattern = re.compile(r'\[meta\].*?\[\/meta\]', re.S)
         metas = mkd_pattern.findall(raw_post)[0].split('\n')
         #get meta
@@ -38,10 +38,13 @@ def render(ns, NameSpace):
                 container.meta[key] = value.strip()
             except:
                 pass
-        if hasattr(container.meta, 'folder'):
+        if hasattr(container.meta, 'folder') and container.meta.folder != None:
             ns.context.folder.append(container.meta.folder)
         container.meta.link = os.path.splitext(post)[0] + '.html'
-        container.meta.tags = container.meta.tags.split(',')
+        try:
+            container.meta.tags = container.meta.tags.split(',')
+        except AttributeError:
+            container.meta.tags = None
         md = markdown.Markdown(
             safe_mode=False,
             output_format='xhtml',

@@ -5,20 +5,22 @@ import os
 from jinja2 import Environment, FileSystemLoader
 
 
-
 def write(ns):
     tpl_dir = os.path.join(ns.root.path, '_templates')
     jinja = Environment(
-        loader=FileSystemLoader(tpl_dir),
+        loader=FileSystemLoader(tpl_dir, encoding='utf-8'),
         autoescape=False,
     )
     #write index.html
     print 'writing index.html'
     index_tpl = jinja.get_template('index.html')
     post_tpl = jinja.get_template('post.html')
-    result = index_tpl.render(site=ns.site, context=ns.context,
-                              posts=ns.context.posts, hilite='home')
+    result = index_tpl.render(site=ns.site,
+                              context=ns.context,
+                              posts=ns.context.posts,
+                              hilite='home')
     desti = os.path.join(ns.site.deploy, 'index.html')
+    print result.decode('utf-8')
     f = open(desti, 'w')
     f.write(result)
     f.close()
