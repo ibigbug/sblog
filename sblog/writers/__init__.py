@@ -27,3 +27,25 @@ def write(path, ns):
         f = open(desti, 'w')
         f.write(result.encode('utf-8'))
         f.close()
+
+        #write folder
+        folder = os.path.join(ns.root.deploy, (post.meta.folder).strip())
+        if not os.path.exists(folder):
+            print 'making folder %s...' % folder
+            os.mkdir(folder)
+        ns.folder.append((post.meta.folder).strip())
+    #deploy folder
+    tpl = jinja.get_template('index.html')
+    folder_list = list(set(ns.folder))
+    for f in folder_list:
+        posts = []
+        print 'deploying folder %s...' % f
+        for post in ns.context:
+            if (post.meta.folder).strip() == f:
+                posts.append(post)
+        result = tpl.render(site=ns.site,context=posts)
+        desti_folder = os.path.join(path, f)
+        index = os.path.join(desti_folder, 'index.html')
+        f = open(index, 'w')
+        f.write(result)
+        f.close()

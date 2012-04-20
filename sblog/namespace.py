@@ -21,3 +21,4 @@ ns.root.content = 'content'
 ns.root.deploy = 'deploy'
 ns.site = NameSpace()
 ns.context = []
+ns.folder = []
