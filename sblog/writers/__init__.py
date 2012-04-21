@@ -20,9 +20,8 @@ def write(ns):
                               posts=ns.context.posts,
                               hilite='home')
     desti = os.path.join(ns.site.deploy, 'index.html')
-    print result.decode('utf-8')
     f = open(desti, 'w')
-    f.write(result)
+    f.write(result.encode('utf-8'))
     f.close()
     #write post.html
     for post in ns.context.posts:
@@ -35,10 +34,13 @@ def write(ns):
         f.close()
 
         #write folder
-        folder = os.path.join(ns.site.deploy, post.meta.folder)
-        if not os.path.exists(folder):
-            print 'making folder %s...' % folder
-            os.mkdir(folder)
+        if post.meta.folder:
+            folder = os.path.join(ns.site.deploy, post.meta.folder)
+            if not os.path.exists(folder):
+                print 'making folder %s...' % folder
+                os.mkdir(folder)
+        else:
+            print '%s folder missing...' % post.meta.link
     #deploy folder
     folder_list = list(set(ns.context.folder))
     for f in folder_list:
@@ -52,5 +54,5 @@ def write(ns):
         desti_folder = os.path.join(ns.site.deploy, f)
         index = os.path.join(desti_folder, 'index.html')
         f = open(index, 'w')
-        f.write(result)
+        f.write(result.encode('utf-8'))
         f.close()

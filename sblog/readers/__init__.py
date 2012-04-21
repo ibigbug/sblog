@@ -28,14 +28,15 @@ def render(ns, NameSpace):
                 lexer = TextLexer()
             code = highlight(m.group(2), lexer, formatter)
             code = code.replace('\n', '<br />')
-            raw_post = pyg_pattern.sub(code, raw_post).decode('utf-8')
+            raw_post = pyg_pattern.sub(code, raw_post)
+
         mkd_pattern = re.compile(r'\[meta\].*?\[\/meta\]', re.S)
         metas = mkd_pattern.findall(raw_post)[0].split('\n')
         #get meta
         for meta in metas:
             try:
                 key, value = meta.split(':')
-                container.meta[key] = value.strip()
+                container.meta[key.strip()] = value.strip()
             except:
                 pass
         if hasattr(container.meta, 'folder') and container.meta.folder != None:
@@ -45,6 +46,9 @@ def render(ns, NameSpace):
             container.meta.tags = container.meta.tags.split(',')
         except AttributeError:
             container.meta.tags = None
+        finally:
+            if container.meta.tags:
+                container.meta.tags = list(set(container.meta.tags))
         md = markdown.Markdown(
             safe_mode=False,
             output_format='xhtml',

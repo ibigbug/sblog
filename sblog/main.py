@@ -6,9 +6,11 @@ import shutil
 
 from sblog import __version__ as version
 from namespace import ns, NameSpace
+from utils import timer
 import readers
 import writers
 import ConfigParser
+
 
 
 def init():
@@ -75,7 +77,7 @@ def gene_static():
     print 'generating new static files...'
     shutil.copytree(ns.root.static_dir, desti_static)
 
-
+@timer()
 def main():
     init()
     build()
