@@ -57,3 +57,11 @@ def render(ns, NameSpace):
         container.content = md.convert(raw_content)
         ns.context.posts.append(container)
     ns.context.folder = list(set(ns.context.folder))
+    #sort posts
+    count = len(ns.context.posts)
+    for i in range(1, count):
+        for j in range(0, count - i):
+            if ns.context.posts[j + 1].meta.date >\
+               ns.context.posts[j].meta.date:
+                ns.context.posts[j + 1], ns.context.posts[j] =\
+                ns.context.posts[j] ,ns.context.posts[j + 1]

@@ -39,6 +39,7 @@ body .fn-hide{display:none;}
 .ft-center{text-align:center;}
 .ft-left{text-align:left;}
 .ft-right{text-align:right;}
+a{color:black;}a:hover{color:black;}
 ::selection{background:#cc3300;color:#fff;text-shadow:none;}
 .c,.cm,.c1{color:#0e6081;font-style:italic;}
 .err{color:#a61717;background-color:#e3d2d2;}
@@ -114,5 +115,6 @@ html body div.wrap div.entry div.entry-content h3{font-size:16px;}
 html body div.wrap div.entry div.entry-content h4{font-size:14px;}
 html body div.wrap div.entry div.entry-content h5{font-size:12px;}
 html body div.wrap div.entry div.entry-content h6{font-size:20px;}
+html body div.wrap div.entry div#dsq-content a{color:black;}html body div.wrap div.entry div#dsq-content a:hover{color:black;}
 html body footer#footer{max-width:600px;margin:0 auto;padding-top:40px;font-size:12px;text-align:right;}html body footer#footer p{color:#ccc;}html body footer#footer p .copyright{color:gray;}
 html body footer#footer p a{color:gray;}html body footer#footer p a:hover{color:black;}
