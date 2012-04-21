@@ -107,7 +107,7 @@ html body div.wrap div.entry h1.entry-title{font-size:24px;}html body div.wrap d
 html body div.wrap div.entry div.entry-meta{border-top:1px double #ddd;border-bottom:1px double #ddd;padding:5px 0;}
 html body div.wrap div.entry div.entry-content{margin-top:20px;color:gray;font-size:14px;}html body div.wrap div.entry div.entry-content p{margin-bottom:12px;}
 html body div.wrap div.entry div.entry-content a{color:black;}html body div.wrap div.entry div.entry-content a:hover{color:black;}
-html body div.wrap div.entry div.entry-content div.highlight{border:1px dashed #ccc;padding:5px;}
+html body div.wrap div.entry div.entry-content div.highlight{border:1px dashed #ccc;padding:5px;margin-top:10px;}
 html body div.wrap div.entry div.entry-content h1,html body div.wrap div.entry div.entry-content h2,html body div.wrap div.entry div.entry-content h3,html body div.wrap div.entry div.entry-content h4,html body div.wrap div.entry div.entry-content h5,html body div.wrap div.entry div.entry-content h6{font-weight:bold;color:black;}
 html body div.wrap div.entry div.entry-content h1{font-size:20px;}
 html body div.wrap div.entry div.entry-content h2{font-size:18px;}
