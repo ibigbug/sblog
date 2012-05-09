@@ -37,7 +37,7 @@ def write(ns):
     f.write(feed.encode('utf-8'))
     f.close()
 
-    #write post.html
+    #write all posts
     for post in ns.context.posts:
         print 'writing %s' % post.meta.link
         result = post_tpl.render(site=ns.site, context=ns.context,
@@ -47,7 +47,7 @@ def write(ns):
         f.write(result.encode('utf-8'))
         f.close()
 
-        #write folder
+        #make folder
         if post.meta.folder:
             folder = os.path.join(ns.site.deploy, post.meta.folder)
             if not os.path.exists(folder):
@@ -72,5 +72,5 @@ def write(ns):
         f.close()
 
 
-def atom_date_time(value, format='%Y-%m-%dT%h:%M:SZ'):
+def atom_date_time(value, format='%Y-%m-%dT%H:%M:%SZ'):
     return value.strftime(format)

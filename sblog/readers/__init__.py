@@ -46,13 +46,14 @@ def render(ns, NameSpace):
         ns.context.posts.append(container)
     ns.context.folder = list(set(ns.context.folder))
     #sort posts
-    count = len(ns.context.posts)
-    for i in range(1, count):
-        for j in range(0, count - i):
-            if ns.context.posts[j + 1].meta.date >\
-               ns.context.posts[j].meta.date:
-                ns.context.posts[j + 1], ns.context.posts[j] =\
-                ns.context.posts[j], ns.context.posts[j + 1]
+    ns.context.posts.sort(lambda x, y: cmp(y.meta.date, x.meta.date))
+    #count = len(ns.context.posts)
+    #for i in range(1, count):
+    #    for j in range(0, count - i):
+    #        if ns.context.posts[j + 1].meta.date >\
+    #           ns.context.posts[j].meta.date:
+    #            ns.context.posts[j + 1], ns.context.posts[j] =\
+    #            ns.context.posts[j], ns.context.posts[j + 1]
 
 
 def hilite(raw_post):
