@@ -16,11 +16,11 @@
         <nav id="nav">
             <ul>
             	<li>
-                <a class="nav-home" href="{{ site.site_url }}">Home</a>
+                <a class="nav-home" href="/">Home</a>
             	</li>
                 {% for n in context.folder %}
                 <li>
-                <a class="nav-{{ n }}" href="{{ site.site_url }}/{{ n }}">{{ n.title() }}</a>
+                <a class="nav-{{ n }}" href="/{{ n }}">{{ n.title() }}</a>
                 </li>
                 {% endfor %}
             </ul>

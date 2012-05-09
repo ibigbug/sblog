@@ -6,7 +6,7 @@
 <ul class="entry-list">
     {% for p in posts %}
     <li>
-    <a href="{{ site.site_url }}/{{ p.meta.link }}">{{ p.meta.title }}</a>
+    <a href="/{{ p.meta.link }}">{{ p.meta.title }}</a>
     <div class="entry-meta">
         Published on
         <time class="publish-date" datetime="{{ p.meta.date }}">{{ p.meta.date }}</time>

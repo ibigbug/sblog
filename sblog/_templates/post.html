@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="entry">
-    <h1 class="entry-title"><a href="{{ site.site_url }}/{{ post.meta.link }}">{{ post.meta.title }}</a></h1>
+    <h1 class="entry-title"><a href="/{{ post.meta.link }}">{{ post.meta.title }}</a></h1>
     <div class="entry-meta">
         Published on
         <time datetime="{{ post.meta.date }}">{{ post.meta.date }}</time>

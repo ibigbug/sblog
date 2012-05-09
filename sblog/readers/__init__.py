@@ -16,22 +16,10 @@ def render(ns, NameSpace):
         print 'reading %s' % post
         container = NameSpace()
         container.meta = NameSpace()
-        raw_post = open(post).read().decode('utf-8')
-        #pygments render
-        formatter = HtmlFormatter(noclasses=False)
-        pyg_pattern = re.compile(r'\[code:(\w+)\](.*?)\[\/code\]', re.S)
-        m = re.search(pyg_pattern, raw_post)
-        if m:
-            try:
-                lexer = get_lexer_by_name(m.group(1))
-            except:
-                lexer = TextLexer()
-            code = highlight(m.group(2), lexer, formatter)
-            code = code.replace('\n', '<br />')
-            raw_post = pyg_pattern.sub(code, raw_post)
 
-        mkd_pattern = re.compile(r'\[meta\].*?\[\/meta\]', re.S)
-        metas = mkd_pattern.findall(raw_post)[0].split('\n')
+        raw_post = open(post).read().decode('utf-8')
+        meta_pattern = re.compile(r'\[meta\].*?\[\/meta\]', re.S)
+        metas = meta_pattern.findall(raw_post)[0].split('\n')
         #get meta
         for meta in metas:
             try:
@@ -54,7 +42,7 @@ def render(ns, NameSpace):
             output_format='xhtml',
         )
         raw_content = raw_post.split('[/meta]')[1]
-        container.content = md.convert(raw_content)
+        container.content = md.convert(hilite(raw_content))
         ns.context.posts.append(container)
     ns.context.folder = list(set(ns.context.folder))
     #sort posts
@@ -64,4 +52,20 @@ def render(ns, NameSpace):
             if ns.context.posts[j + 1].meta.date >\
                ns.context.posts[j].meta.date:
                 ns.context.posts[j + 1], ns.context.posts[j] =\
-                ns.context.posts[j] ,ns.context.posts[j + 1]
+                ns.context.posts[j], ns.context.posts[j + 1]
+
+
+def hilite(raw_post):
+    #pygments render
+    formatter = HtmlFormatter(noclasses=False)
+    pyg_pattern = re.compile(r'~~~:(\w+)(.*?)~~~', re.S)
+
+    def repl(m):
+        try:
+            lexer = get_lexer_by_name(m.group(1))
+        except:
+            lexer = TextLexer()
+        code = highlight(m.group(2), lexer, formatter)
+        return code
+
+    return pyg_pattern.sub(repl, raw_post)

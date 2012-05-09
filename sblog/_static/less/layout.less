@@ -81,6 +81,41 @@ html {
                     p {
                         margin-bottom: 12px;
                     }
+                    img {
+                        max-width: 600px;
+                        margin: 10px 0;
+                    }
+                    li {
+                        list-style-type: square;
+                    }
+                    blockquote {
+                        padding: 15px 24px 1px;
+                        margin: 8px 0;
+                    }
+                    blockquote::before {
+                        content: '"';
+                        font-size: 34px;
+                        font-weight: bold;
+                        color: #bababa;
+                        font-style: italic;
+                        line-height: 24px;
+                        margin: 0 0 0 -24px;
+                        font-family: Georgia, serif;
+                    }
+                    blockquote::after {
+                        display: block;
+                        width: 98%;
+                        text-align: right;
+                        content:'"';
+                        clear:both;
+                        font-size: 34px;
+                        font-weight: bold;
+                        color: #bababa;
+                        font-style: italic;
+                        line-height: 0;
+                        margin: 0 0 12px 10px;
+                        font-family: Georgia, serif;
+                    }
                     a {
                         color: black;
                         &:hover {
@@ -90,7 +125,8 @@ html {
                     div.highlight {
                         border: 1px dashed #ccc;
                         padding: 5px;
-                        margin-top: 10px;
+                        margin: 10px 0;
+                        word-wrap: break-word;
                     }
                     h1,h2,h3,h4,h5,h6 {
                         font-weight: bold;

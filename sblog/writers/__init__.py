@@ -2,27 +2,41 @@
 # -*- coding:utf8 -*-
 
 import os
+import datetime
 from jinja2 import Environment, FileSystemLoader
 
 
 def write(ns):
+    #load templates
+    print 'loading templates...'
     tpl_dir = os.path.join(ns.root.path, '_templates')
     jinja = Environment(
         loader=FileSystemLoader(tpl_dir, encoding='utf-8'),
         autoescape=False,
     )
-    #write index.html
-    print 'writing index.html'
+    jinja.filters['atomdatetime'] = atom_date_time
     index_tpl = jinja.get_template('index.html')
     post_tpl = jinja.get_template('post.html')
-    result = index_tpl.render(site=ns.site,
+    feed_tpl = jinja.get_template('feed.xml')
+    #write index.html
+    print 'writing index.html'
+    index = index_tpl.render(site=ns.site,
                               context=ns.context,
                               posts=ns.context.posts,
                               hilite='home')
     desti = os.path.join(ns.site.deploy, 'index.html')
     f = open(desti, 'w')
-    f.write(result.encode('utf-8'))
+    f.write(index.encode('utf-8'))
     f.close()
+    #writer feed.xml
+    feed = feed_tpl.render(site=ns.site,
+                            posts=ns.context.posts,
+                            now=datetime.datetime.now())
+    desti = os.path.join(ns.site.deploy, 'feed.xml')
+    f = open(desti, 'w')
+    f.write(feed.encode('utf-8'))
+    f.close()
+
     #write post.html
     for post in ns.context.posts:
         print 'writing %s' % post.meta.link
@@ -56,3 +70,7 @@ def write(ns):
         f = open(index, 'w')
         f.write(result.encode('utf-8'))
         f.close()
+
+
+def atom_date_time(value, format='%Y-%m-%dT%h:%M:SZ'):
+    return value.strftime(format)
