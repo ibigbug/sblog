@@ -15,15 +15,14 @@ vi config.ini
 4. write  
 
 demo:  
-> 
-[meta]
-title: hello world  
-date: 0000-00-00
-folder: test
-[/meta]
+    [meta]
+    title: hello world  
+    date: 0000-00-00
+    folder: test
+    [/meta]
 
-content with markdown supporting
+    content with markdown supporting
 
-~~~:python
-source code here
-~~~
+    ~~~:python
+    source code here
+    ~~~
