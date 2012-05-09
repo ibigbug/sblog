@@ -21,4 +21,3 @@ ns.site = NameSpace()
 ns.context = NameSpace()
 ns.context.folder = []
 ns.context.posts = []
-ns.struct = NameSpace() # for using in other method
