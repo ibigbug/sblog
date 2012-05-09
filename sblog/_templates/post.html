@@ -1,4 +1,7 @@
 {% extends "layout.html" %}
+{% block title %}
+{{ post.meta.title }}
+{% endblock %}
 {% block content %}
 <div class="entry">
     <h1 class="entry-title"><a href="/{{ post.meta.link }}">{{ post.meta.title }}</a></h1>
