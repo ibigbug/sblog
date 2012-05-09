@@ -1,1 +1,29 @@
-#DEVELOPING
+SBlog
+======
+
+##Intro
+This is a simple static blog generator.  
+markdown,ga,disqus are supported.
+
+##Usage
+1. install  
+python setup.py install
+2. build an environment  
+cd /new/dir/
+3. config  
+vi config.ini
+4. write  
+
+demo:  
+> 
+[meta]
+title: hello world  
+date: 0000-00-00
+folder: test
+[/meta]
+
+content with markdown supporting
+
+~~~:python
+source code here
+~~~
