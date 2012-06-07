@@ -1,7 +1,10 @@
 {% extends "layout.html" %}
+{% block title %}
+{{ hilite.title() }}
+{% endblock %}
 {% block content %}
 <header class="entry-header">
-    <h1 class="entry-title">Articles {% if hilite != 'home' %}in {{ hilite.title() }} {% endif %}</h1>
+    <h1 class="entry-title">Articles {% if hilite != 'home' %} in {{ hilite.title() }} {% endif %}</h1>
 </header>
 <ul class="entry-list">
     {% for p in posts %}
