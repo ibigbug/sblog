@@ -27,9 +27,11 @@ def render(ns, NameSpace):
                 container.meta[key.strip()] = value.strip()
             except:
                 pass
-        if hasattr(container.meta, 'folder') and container.meta.folder != None:
+        #folder meta
+        if container.meta.get('folder', None):
             ns.context.folder.append(container.meta.folder)
         container.meta.link = os.path.splitext(post)[0] + '.html'
+        #tag meta
         try:
             container.meta.tags = container.meta.tags.split(',')
         except AttributeError:
@@ -37,6 +39,11 @@ def render(ns, NameSpace):
         finally:
             if container.meta.tags:
                 container.meta.tags = list(set(container.meta.tags))
+        #date meta
+        year, month, day = container.meta.date.split('-')
+        month = month if len(month) == 2 else '0' + month
+        day = day if len(day) == 2 else '0' + day
+        container.meta.date = '%s-%s-%s' % (year, month, day)
         md = markdown.Markdown(
             safe_mode=False,
             output_format='xhtml',
