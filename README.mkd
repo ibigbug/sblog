@@ -7,14 +7,16 @@ markdown,ga,disqus are supported.
 
 ##Usage
 1. install  
-python setup.py install
+shell:python setup.py install
 2. build an environment  
-cd /new/dir/
+shell:cd /new/dir/
+shell:sblog
 3. config  
 vi config.ini
 4. write  
 
 demo:  
+<pre>
     [meta]  
     title: hello world  
     date: 0000-00-00   
@@ -24,5 +26,6 @@ demo:
     ~~~:python  
     source code here  
     ~~~  
+</pre>
 
 View [demo](http://blog.xiaoba.me)
