@@ -52,8 +52,18 @@ def render(ns, NameSpace):
         container.content = md.convert(hilite(raw_content))
         ns.context.posts.append(container)
     ns.context.folder = list(set(ns.context.folder))
+
     #sort posts
     ns.context.posts.sort(lambda x, y: cmp(y.meta.date, x.meta.date))
+
+    #calculate pre & next
+    for p in ns.context.posts:
+        index = ns.context.posts.index(p)
+        p.previous = ns.context.posts[index - 1] if index != 0 else None
+        try:
+            p.nkst = ns.context.posts[index + 1]
+        except IndexError:
+            p.nkst = None
 
 
 def hilite(raw_post):
