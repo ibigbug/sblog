@@ -17,13 +17,13 @@ vi config.ini
 
 demo:  
 <pre>
-    [meta]  
+    ======
     title: hello world  
     date: 0000-00-00   
     folder: test  
-    [/meta]  
+    ======
     content with markdown supporting  
-    ~~~:python  
+    ~~~python  
     source code here  
     ~~~  
 </pre>

@@ -20,10 +20,12 @@ def write(ns):
     feed_tpl = jinja.get_template('feed.xml')
     #write index.html
     print 'writing index.html'
-    index = index_tpl.render(site=ns.site,
-                              context=ns.context,
-                              posts=ns.context.posts,
-                              hilite='home')
+    index = index_tpl.render(
+        site=ns.site,
+        context=ns.context,
+        posts=ns.context.posts,
+        hilite=u'home',
+    )
     desti = os.path.join(ns.site.deploy, 'index.html')
     f = open(desti, 'w')
     f.write(index.encode('utf-8'))

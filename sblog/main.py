@@ -14,6 +14,8 @@ import ConfigParser
 
 
 def init():
+    print 'loading sblog..'
+    print 'Sblog version %s' % version
     ns.root.path = os.path.dirname(__file__)
     ns.root.version = version
     ns.root.template_dir = os.path.join(os.path.dirname(__file__),
@@ -27,9 +29,9 @@ def pre_read():
     config = os.path.join(ns.site.proj_dir, 'config.ini')
     cf.read(config)
 
-    ns.site.site_name = cf.get('basic', 'site_name')
-    ns.site.author = cf.get('basic', 'author')
-    ns.site.site_url = cf.get('basic', 'site_url')
+    ns.site.site_name = cf.get('basic', 'site_name').decode('utf-8')
+    ns.site.author = cf.get('basic', 'author').decode('utf-8')
+    ns.site.site_url = cf.get('basic', 'site_url').decode('utf-8')
     ns.site.content = os.path.join(os.getcwd(), 'content')
     ns.site.deploy = os.path.join(os.getcwd(), 'deploy')
     try:

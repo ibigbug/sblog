@@ -18,17 +18,17 @@ def render(ns, NameSpace):
         container.meta = NameSpace()
 
         raw_post = open(post).read().decode('utf-8')
-        meta_pattern = re.compile(r'\[meta\].*?\[\/meta\]', re.S)
+        meta_pattern = re.compile(r'======.*?\======', re.S)
         metas = meta_pattern.findall(raw_post)[0].split('\n')
         #get meta
         for meta in metas:
             try:
-                key, value = meta.split(':')
+                key, value = meta.split(u':')
                 container.meta[key.strip()] = value.strip()
             except:
                 pass
         #folder meta
-        if container.meta.get('folder', None):
+        if container.meta.get(u'folder', None):
             ns.context.folder.append(container.meta.folder)
         container.meta.link = os.path.splitext(post)[0] + '.html'
         #tag meta
@@ -48,7 +48,7 @@ def render(ns, NameSpace):
             safe_mode=False,
             output_format='xhtml',
         )
-        raw_content = raw_post.split('[/meta]')[1]
+        raw_content = raw_post.split('======')[2]
         container.content = md.convert(hilite(raw_content))
         ns.context.posts.append(container)
     ns.context.folder = list(set(ns.context.folder))
@@ -69,7 +69,7 @@ def render(ns, NameSpace):
 def hilite(raw_post):
     #pygments render
     formatter = HtmlFormatter(noclasses=False)
-    pyg_pattern = re.compile(r'~~~:(\w+)(.*?)~~~', re.S)
+    pyg_pattern = re.compile(r'~~~(\w+)(.*?)~~~', re.S)
 
     def repl(m):
         try:
