@@ -8,7 +8,9 @@
     <div class="entry-meta">
         Published on
         <time datetime="{{ post.meta.date }}">{{ post.meta.date }}</time>
+        {% if post.meta.folder %}
         in <a href="/{{ post.meta.folder }}">{{ post.meta.folder.title() }}</a>
+        {% endif %}
     </div>
     <div class="entry-content">
         {{ post.content }}
@@ -35,9 +37,9 @@
         var disqus_shortname = '{{ context.disqus }}';
         var disqus_title = '{{ post.meta.title }}';
         (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
     </script>
     {% endif %}

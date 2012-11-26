@@ -23,7 +23,7 @@
     {% for p in posts %}
     {% if p.meta.public %}
     <li>
-    <h3>
+    <h4>
         <a href="/{{ p.meta.link }}">{{ p.meta.title }}</a>
         <small>
             Published on
@@ -31,7 +31,7 @@
             by
             <span class="author-name">{{ site.author }}</span>
         </small>
-    </h3>
+    </h4>
     </li>
     {% endif %}
     {% endfor %}

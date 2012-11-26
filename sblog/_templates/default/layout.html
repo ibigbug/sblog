@@ -7,12 +7,6 @@
         <link media="all" rel="stylesheet" href="/static/{{ context.theme }}/css/reset.css" type="text/css" />
         <link media="all" rel="stylesheet" href="/static/{{ context.theme }}/css/typo.css" type="text/css" />
         <link media="all" rel="stylesheet" href="/static/{{ context.theme }}/css/style.css" type="text/css" />
-        <script src="/static/{{ context.theme }}/js/jquery.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('.nav-{{ hilite }}').addClass('current');
-            });
-        </script>
     </head>
     <body>
         <header id="header">
@@ -22,7 +16,7 @@
                     <li class="fn-left">
                     <a class="nav-home" href="/">Home</a>
                     </li>
-                    {% for n in context.folder %}
+                    {% for n in context.folder if n %}
                     <li class="fn-left">
                     <a class="nav-{{ n }}" href="/{{ n }}">{{ n.title() }}</a>
                     </li>
@@ -35,9 +29,10 @@
         </header>
         <div class="wrap typo">
             {% block content %}{% endblock %}
+            <div class="end">&#10084;</div>
         </div>
         <footer id="footer">
-            <small>Copyright by <a class="copyright" href="{{ site.site_url }}">{{ site.site_name.title() }}</a> | Powered by <a href="https://github.com/ibigbug/sblog">SBlog</a></small>
+            <small>Copyright by <a class="copyright" href="{{ site.site_url }}">{{ site.site_name.upper() }}</a> | Powered by <a href="https://github.com/ibigbug/sblog">SBlog</a></small>
         </footer>
         {% if context.ga %}
         <script type="text/javascript">

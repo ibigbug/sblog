@@ -43,16 +43,25 @@ body { text-align: center; }
     text-align: left;
     margin-top: 120px;
 }
+.entry-content {
+    margin-bottom: 40px;
+}
 .entry-list li {
     list-style-type: none;
 }
 .entry-list li h3 {
     margin-right: 8px;
 }
+.end {
+    text-align: center;
+    color: #aaa;
+    margin-top: 50px;
+    font-size: 40px;
+}
 
 #footer {
     max-width: 600px;
-    text-align: right;
+    text-align: center;
     margin: 0 auto;
 }
 a:hover {
