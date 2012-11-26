@@ -29,3 +29,9 @@ demo:
 </pre>
 
 View [demo](http://blog.xiaoba.me)
+
+
+##
+CHANGE LOG
+
+v1.0.4: custom theme support.

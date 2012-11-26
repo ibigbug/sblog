@@ -42,6 +42,10 @@ def pre_read():
         ns.context.disqus = cf.get('extra', 'disqus')
     except:
         ns.context.disqus = None
+    try:
+        ns.context.theme = cf.get('extra','theme')
+    except:
+        ns.context.theme = 'default'
 
 
 def build():

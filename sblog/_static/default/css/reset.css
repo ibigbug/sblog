@@ -98,28 +98,3 @@ a{color:black;}a:hover{color:black;}
 .vg{color:#008080;}
 .vi{color:#008080;}
 .il{color:#009999;}
-html{background:white;}html body{text-align:center;}html body header#header{text-align:center;border-top:2px solid gray;border-bottom:1px solid #ddd;box-shadow:3px 3px #fff;}html body header#header nav#nav{margin:0 auto;text-align:right;max-width:600px;}html body header#header nav#nav ul li{display:inline-block;padding:3px 8px;}html body header#header nav#nav ul li a{color:gray;font-size:18px;}html body header#header nav#nav ul li a.current{color:black;}
-html body div.wrap{margin:0 auto;max-width:600px;text-align:left;}html body div.wrap header.entry-header h1{font-size:24px;font-weight:bold;}
-html body div.wrap ul.entry-list li{padding:20px 10px 10px;border-bottom:1px solid #ddd;font-size:16px;}html body div.wrap ul.entry-list li a{color:gray;}html body div.wrap ul.entry-list li a:link,html body div.wrap ul.entry-list li a:visited,html body div.wrap ul.entry-list li a:active{color:gray;}
-html body div.wrap ul.entry-list li a:hover{color:black;}
-html body div.wrap ul.entry-list li div.entry-meta{text-align:right;font-size:12px;color:#ccc;}
-html body div.wrap div.entry h1.entry-title{font-size:24px;margin-bottom:15px;}html body div.wrap div.entry h1.entry-title a{color:black;}
-html body div.wrap div.entry div.entry-meta{border-top:1px double #ddd;border-bottom:1px double #ddd;padding:5px 0;}
-html body div.wrap div.entry div.entry-content{margin-top:20px;color:gray;font-size:14px;}html body div.wrap div.entry div.entry-content p{margin-bottom:12px;}
-html body div.wrap div.entry div.entry-content img{max-width:600px;margin:10px 0;}
-html body div.wrap div.entry div.entry-content li{list-style-type:square;}
-html body div.wrap div.entry div.entry-content blockquote{padding:15px 24px 1px;margin:8px 0;}
-html body div.wrap div.entry div.entry-content blockquote::before{content:'"';font-size:34px;font-weight:bold;color:#bababa;font-style:italic;line-height:24px;margin:0 0 0 -24px;font-family:Georgia, serif;}
-html body div.wrap div.entry div.entry-content blockquote::after{display:block;width:98%;text-align:right;content:'"';clear:both;font-size:34px;font-weight:bold;color:#bababa;font-style:italic;line-height:0;margin:0 0 12px 10px;font-family:Georgia, serif;}
-html body div.wrap div.entry div.entry-content a{color:black;}html body div.wrap div.entry div.entry-content a:hover{color:black;}
-html body div.wrap div.entry div.entry-content div.highlight{border:1px dashed #ccc;padding:10px;margin:10px 0;word-wrap:break-word;}
-html body div.wrap div.entry div.entry-content h1,html body div.wrap div.entry div.entry-content h2,html body div.wrap div.entry div.entry-content h3,html body div.wrap div.entry div.entry-content h4,html body div.wrap div.entry div.entry-content h5,html body div.wrap div.entry div.entry-content h6{font-weight:bold;color:black;}
-html body div.wrap div.entry div.entry-content h1{font-size:20px;}
-html body div.wrap div.entry div.entry-content h2{font-size:18px;}
-html body div.wrap div.entry div.entry-content h3{font-size:16px;}
-html body div.wrap div.entry div.entry-content h4{font-size:14px;}
-html body div.wrap div.entry div.entry-content h5{font-size:12px;}
-html body div.wrap div.entry div.entry-content h6{font-size:20px;}
-html body div.wrap div.entry div#dsq-content a{color:black;}html body div.wrap div.entry div#dsq-content a:hover{color:black;}
-html body footer#footer{max-width:600px;margin:0 auto;padding-top:40px;font-size:12px;text-align:right;}html body footer#footer p{color:#ccc;}html body footer#footer p .copyright{color:gray;}
-html body footer#footer p a{color:gray;}html body footer#footer p a:hover{color:black;}

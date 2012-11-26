@@ -9,7 +9,7 @@ from jinja2 import Environment, FileSystemLoader
 def write(ns):
     #load templates
     print 'loading templates...'
-    tpl_dir = os.path.join(ns.root.path, '_templates')
+    tpl_dir = os.path.join(ns.root.path, '_templates/%s') % ns.context.theme
     jinja = Environment(
         loader=FileSystemLoader(tpl_dir, encoding='utf-8'),
         autoescape=False,
