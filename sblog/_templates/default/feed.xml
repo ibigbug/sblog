@@ -5,6 +5,7 @@
     <updated>{{ now|atomdatetime }}</updated>
     <id>{{ site.site_url }}</id>
     {% for post in posts %}
+    {% if post.meta.public %}
     <entry>
         <title type="html"><![CDATA[{{ post.meta.title }}]]></title>
         <author><name>{{ site.author }}</name><uri>{{  site.site_url }}</uri></author>
@@ -16,5 +17,6 @@
             <![CDATA[ {{ post.content }} ]]>
         </content>
     </entry>
+    {% endif %}
     {% endfor %}
 </feed>
