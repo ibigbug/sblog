@@ -27,7 +27,6 @@ setup(
         'Environment :: Console',
         'License :: OSI Approved :: BSD License',
         'Operating System :: POSIX',
-        'Operating System :: MacOS',
         'Programming Language :: Python',
     ]
 )
