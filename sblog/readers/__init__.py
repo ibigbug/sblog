@@ -38,7 +38,7 @@ def render(ns, NameSpace):
         else:
             container.meta.public = True
         #folder meta
-        if container.meta.get('folder', None):
+        if container.meta.get('folder', 'default'):
             ns.context.folder.append(container.meta.folder)
         container.meta.link = os.path.splitext(post)[0] + '.html'
         #tag meta
