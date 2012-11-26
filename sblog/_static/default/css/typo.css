@@ -61,7 +61,7 @@ iframe {
 blockquote {
 	margin: 1em 4em 1em 2em;
 	padding: 0.6em 1em;
-	background: #f1f1f1;
+    border-left: 1em solid #f1f1f1;
 }
 blockquote blockquote {
 	padding: 0 0 0 1em;
@@ -121,10 +121,11 @@ sub {
 	bottom: -0.25em;
 }
 
-/* 让链接在 hover 状态下显示下划线 */
+/* 让链接在 hover 状态下显示下划线 
 a:hover {
 	text-decoration: underline;
 }
+*/
 
 /* 默认不显示下划线，保持页面简洁 */
 ins, a {

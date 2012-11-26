@@ -16,17 +16,18 @@
     </head>
     <body>
         <header id="header">
+            <h1 class="brand"><a href="/">{{ site.site_name }}</a></h1>
             <nav id="nav">
                 <ul class="fn-clear">
                     <li class="fn-left">
                     <a class="nav-home" href="/">Home</a>
                     </li>
                     {% for n in context.folder %}
-                    <li>
-                    <a class="fn-left nav-{{ n }}" href="/{{ n }}">{{ n.title() }}</a>
+                    <li class="fn-left">
+                    <a class="nav-{{ n }}" href="/{{ n }}">{{ n.title() }}</a>
                     </li>
                     {% endfor %}
-                    <li>
+                    <li class="fn-left">
                     <a href="/feed.xml">Feed</a>
                     </li>
                 </ul>
@@ -36,7 +37,7 @@
             {% block content %}{% endblock %}
         </div>
         <footer id="footer">
-            <p>Copyright by <a class="copyright" href="{{ site.site_url }}">{{ site.site_name.title() }}</a> | Powered by <a href="https://github.com/ibigbug/sblog">SBlog</a></p>
+            <small>Copyright by <a class="copyright" href="{{ site.site_url }}">{{ site.site_name.title() }}</a> | Powered by <a href="https://github.com/ibigbug/sblog">SBlog</a></small>
         </footer>
         {% if context.ga %}
         <script type="text/javascript">

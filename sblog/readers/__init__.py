@@ -23,12 +23,22 @@ def render(ns, NameSpace):
         #get meta
         for meta in metas:
             try:
-                key, value = meta.split(u':')
+                key, value = meta.split(':')
                 container.meta[key.strip()] = value.strip()
             except:
                 pass
+        #preview meta
+        if container.meta.get('preview', 'False').upper() == 'FALSE':
+            container.meta.preview = False
+        else:
+            container.meta.preview = True
+        #public meta
+        if container.meta.get('public', 'False').upper() == 'FALSE':
+            container.meta.public = False
+        else:
+            container.meta.public = True
         #folder meta
-        if container.meta.get(u'folder', None):
+        if container.meta.get('folder', None):
             ns.context.folder.append(container.meta.folder)
         container.meta.link = os.path.splitext(post)[0] + '.html'
         #tag meta
@@ -44,6 +54,8 @@ def render(ns, NameSpace):
         month = month if len(month) == 2 else '0' + month
         day = day if len(day) == 2 else '0' + day
         container.meta.date = '%s-%s-%s' % (year, month, day)
+
+        #mkd render
         md = markdown.Markdown(
             safe_mode=False,
             output_format='xhtml',

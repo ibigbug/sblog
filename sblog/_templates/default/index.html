@@ -3,20 +3,37 @@
 {{ hilite.title() }}
 {% endblock %}
 {% block content %}
+<div class="entry-content">
+    {% for c in posts %}
+    {% if c.meta.preview  %}
+    <div class="content-title">
+        <small>{{ c.meta.title.upper() }}</small>
+    </div>
+    <div class="content-preview">
+        {{ c.content }}
+    </div>
+    {% endif %}
+    {% endfor %}
+
+</div>
 <header class="entry-header">
-    <h1 class="entry-title">Articles {% if hilite != 'home' %} in {{ hilite.title() }} {% endif %}</h1>
+    <h3 class="entry-title">Articles {% if hilite != 'home' %} in {{ hilite.title() }} {% endif %}</h3>
 </header>
 <ul class="entry-list">
     {% for p in posts %}
+    {% if p.meta.public %}
     <li>
-    <a href="/{{ p.meta.link }}">{{ p.meta.title }}</a>
-    <div class="entry-meta">
-        Published on
-        <time class="publish-date" datetime="{{ p.meta.date }}">{{ p.meta.date }}</time>
-        by
-        <span class="author-name">{{ site.author }}</span>
-    </div>
+    <h3>
+        <a href="/{{ p.meta.link }}">{{ p.meta.title }}</a>
+        <small>
+            Published on
+            <time class="publish-date" datetime="{{ p.meta.date }}">{{ p.meta.date }}</time>
+            by
+            <span class="author-name">{{ site.author }}</span>
+        </small>
+    </h3>
     </li>
+    {% endif %}
     {% endfor %}
 </ul>
 {% endblock %}
