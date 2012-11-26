@@ -71,10 +71,21 @@ def render(ns, NameSpace):
     #calculate pre & next
     for p in ns.context.posts:
         index = ns.context.posts.index(p)
-        p.previous = ns.context.posts[index - 1] if index != 0 else None
         try:
-            p.nkst = ns.context.posts[index + 1]
+            previous = ns.context.posts[index - 1]
+        except:
+            previous = None
+        if previous and previous.meta.public:
+            p.previous = previous
+        else:
+            p.previous = None
+        try:
+            nkst = ns.context.posts[index + 1]
         except IndexError:
+            nkst = None
+        if nkst and nkst.meta.public:
+            p.nkst = nkst
+        else:
             p.nkst = None
 
 
