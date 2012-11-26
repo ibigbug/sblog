@@ -24,7 +24,7 @@
     {% if p.meta.public %}
     <li>
     <h4>
-        <a href="/{{ p.meta.link }}">{{ p.meta.title }}</a>
+        <a href="/{{ p.meta.link }}">{{ p.meta.title.title() }}</a>
         <small>
             Published on
             <time class="publish-date" datetime="{{ p.meta.date }}">{{ p.meta.date }}</time>
