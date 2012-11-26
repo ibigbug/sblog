@@ -1,35 +1,35 @@
 {% extends "layout.html" %}
 {% block title %}
-{{ post.meta.title }}
+{{ post.meta.title }} -
 {% endblock %}
 {% block content %}
 <div class="entry">
     <h1 class="entry-title"><a href="/{{ post.meta.link }}">{{ post.meta.title }}</a></h1>
-    <div class="entry-meta">
+    <small class="entry-meta">
         Published on
         <time datetime="{{ post.meta.date }}">{{ post.meta.date }}</time>
         {% if post.meta.folder %}
         in <a href="/{{ post.meta.folder }}">{{ post.meta.folder.title() }}</a>
         {% endif %}
-    </div>
+    </small>
     <div class="entry-content">
         {{ post.content }}
     </div>
     <div class="entry-meta fn-clear">
-        {% if post.previous %}
         <span class="fn-left">
+            {% if post.previous %}
             <a href="{{ post.previous.meta.link }}">{{ post.previous.meta.title }}</a> &#171; Previous
+            {% else %}
+            没有上一篇了...
+            {% endif %}
         </span>
-        {% else %}
-        没有上一篇了...
-        {% endif %}
-        {% if post.nkst %}
         <span class="fn-right">
+            {% if post.nkst %}
             Next &#187; <a href="{{ post.nkst.meta.link }}">{{ post.nkst.meta.title }}</a>
+            {% else %}
+            没有下一篇了...
+            {% endif %}
         </span>
-        {% else %}
-        没有下一篇了...
-        {% endif %}
     </div>
     {% if context.disqus %}
     <div id="disqus_thread"></div>

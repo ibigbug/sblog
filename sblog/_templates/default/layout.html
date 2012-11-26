@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}{% endblock %}||{{ site.site_name }}</title>
+        <title>{% block title %}{% endblock %} {{ site.site_name }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
         <link media="all" rel="stylesheet" href="/static/{{ context.theme }}/css/reset.css" type="text/css" />
         <link media="all" rel="stylesheet" href="/static/{{ context.theme }}/css/typo.css" type="text/css" />
@@ -46,5 +46,7 @@
             })();
         </script>
         {% endif %}
+        <link href='http://fonts.googleapis.com/css?family=Strait&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
     </body>
 </html>

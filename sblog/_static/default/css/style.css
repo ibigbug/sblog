@@ -1,4 +1,7 @@
-body { text-align: center; }
+body { 
+    text-align: center;
+    font-family: 'Strait', sans-serif;
+}
 #header {
     position: fixed;
     top: 0;
@@ -46,11 +49,21 @@ body { text-align: center; }
 .entry-content {
     margin-bottom: 40px;
 }
+.entry-content .content-title small {
+    color: #ddd;
+}
+.entry-content .content-preview {
+    margin-top: 20px;
+}
 .entry-list li {
     list-style-type: none;
 }
 .entry-list li h3 {
     margin-right: 8px;
+}
+.entry-meta {
+    display: block;
+    margin-bottom: 10px;
 }
 .end {
     text-align: center;
