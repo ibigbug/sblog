@@ -15,22 +15,6 @@
     <div class="entry-content">
         {{ post.content }}
     </div>
-    <div class="entry-meta fn-clear">
-        <span class="fn-left">
-            {% if post.previous %}
-            <a href="{{ post.previous.meta.link }}">{{ post.previous.meta.title.title() }}</a> &#171; Previous
-            {% else %}
-            没有上一篇了...
-            {% endif %}
-        </span>
-        <span class="fn-right">
-            {% if post.nkst %}
-            Next &#187; <a href="{{ post.nkst.meta.link }}">{{ post.nkst.meta.title.title() }}</a>
-            {% else %}
-            没有下一篇了...
-            {% endif %}
-        </span>
-    </div>
     {% if context.disqus %}
     <div id="disqus_thread"></div>
     <script type="text/javascript">

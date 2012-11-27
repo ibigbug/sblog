@@ -4,15 +4,13 @@
 {% endblock %}
 {% block content %}
 <div class="entry-content">
-    {% for c in posts %}
-    {% if c.meta.preview  %}
+    {% for c in preview_posts %}
     <div class="content-title">
         <small>{{ c.meta.title.upper() }}</small>
     </div>
     <div class="content-preview">
         {{ c.content }}
     </div>
-    {% endif %}
     {% endfor %}
 
 </div>
@@ -20,8 +18,8 @@
     <h3 class="entry-title">Articles {% if hilite != 'home' %} in {{ hilite.title() }} {% endif %}</h3>
 </header>
 <ul class="entry-list">
-    {% for p in posts %}
-    {% if p.meta.public %}
+    {% for p in public_posts %}
+    {% if not p.meta.preview %}
     <li>
     <h4>
         <a href="/{{ p.meta.link }}">{{ p.meta.title.title() }}</a>

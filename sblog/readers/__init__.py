@@ -33,10 +33,10 @@ def render(ns, NameSpace):
         else:
             container.meta.preview = True
         #public meta
-        if container.meta.get('public', 'False').upper() == 'FALSE':
-            container.meta.public = False
-        else:
+        if container.meta.get('public', 'True').upper() == 'TRUE':
             container.meta.public = True
+        else:
+            container.meta.public = False
         #folder meta
         if container.meta.get('folder', None):
             ns.context.folder.append(container.meta.folder)
@@ -68,25 +68,10 @@ def render(ns, NameSpace):
     #sort posts
     ns.context.posts.sort(lambda x, y: cmp(y.meta.date, x.meta.date))
 
-    #calculate pre & next
-    for p in ns.context.posts:
-        index = ns.context.posts.index(p)
-        try:
-            previous = ns.context.posts[index - 1]
-        except:
-            previous = None
-        if previous and previous.meta.public:
-            p.previous = previous
-        else:
-            p.previous = None
-        try:
-            nkst = ns.context.posts[index + 1]
-        except IndexError:
-            nkst = None
-        if nkst and nkst.meta.public:
-            p.nkst = nkst
-        else:
-            p.nkst = None
+    public_posts = [p for p in calc_public_posts(ns.context.posts)]
+    ns.context.public_posts = public_posts
+    preview_posts = [p for p in calc_preview_posts(public_posts)]
+    ns.context.preview_posts = preview_posts
 
 
 def hilite(raw_post):
@@ -103,3 +88,15 @@ def hilite(raw_post):
         return code
 
     return pyg_pattern.sub(repl, raw_post)
+
+
+def calc_public_posts(posts):
+    for p in posts:
+        if p.meta.public:
+            yield p
+
+
+def calc_preview_posts(posts):
+    for p in posts:
+        if p.meta.preview:
+            yield p
