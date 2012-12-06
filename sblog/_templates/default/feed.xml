@@ -10,7 +10,7 @@
         <title type="html"><![CDATA[{{ post.meta.title }}]]></title>
         <author><name>{{ site.author }}</name><uri>{{  site.site_url }}</uri></author>
         <link href="{{ site.site_url }}/{{ post.meta.link }}"/>
-        <published>{{ post.meta.date|atomdatetime }}</published>
+        <published>{{ post.meta.date | atomdatetime }}</published>
         <id>{{ site.site_url }}/{{ post.meta.link }}</id>
         <content type="html" xml:base="{{ site.siteurl }}" xml:lang="en">
             <![CDATA[ {{ post.content }} ]]>

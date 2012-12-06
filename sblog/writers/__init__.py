@@ -94,3 +94,4 @@ def atom_date_time(value, format='%Y-%m-%dT%H:%M:%SZ'):
         month=int(month),
         day=int(day)
     ).strftime(format)
+    return value
