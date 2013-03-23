@@ -8,7 +8,6 @@ from jinja2 import Environment, FileSystemLoader
 
 def write(ns):
     #load templates
-    print 'loading templates...'
     tpl_dir = os.path.join(ns.root.path, '_templates/%s') % ns.context.theme
     jinja = Environment(
         loader=FileSystemLoader(tpl_dir, encoding='utf-8'),
@@ -19,7 +18,6 @@ def write(ns):
     post_tpl = jinja.get_template('post.html')
     feed_tpl = jinja.get_template('feed.xml')
     #write index.html
-    print 'writing index.html'
     index = index_tpl.render(
         site=ns.site,
         context=ns.context,
@@ -43,9 +41,17 @@ def write(ns):
     f.write(feed.encode('utf-8'))
     f.close()
 
+    #domain.com/rss/
+    rss = os.path.join(ns.site.deploy, 'rss')
+    if not os.path.exists(rss):
+        os.mkdir(rss)
+    desti = os.path.join(rss, 'index.xml')
+    f = open(desti, 'w')
+    f.write(feed.encode('utf-8'))
+    f.close()
+
     #write all posts
     for post in ns.context.public_posts:
-        print 'writing %s' % post.meta.link
         result = post_tpl.render(
             site=ns.site,
             context=ns.context,
@@ -60,7 +66,6 @@ def write(ns):
         if post.meta.folder:
             folder = os.path.join(ns.site.deploy, post.meta.folder)
             if not os.path.exists(folder):
-                print 'making folder %s...' % folder
                 os.mkdir(folder)
         else:
             print '%s "folder" key missing...' % post.meta.link
@@ -68,7 +73,6 @@ def write(ns):
     folder_list = list(set(ns.context.folder))
     for f in folder_list:
         folded_posts = []
-        print 'deploying folder %s...' % f
         for post in ns.context.public_posts:
             if post.meta.folder == f:
                 folded_posts.append(post)

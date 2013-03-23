@@ -13,7 +13,6 @@ def render(ns, NameSpace):
     raw_posts = os.listdir(ns.site.content)
     os.chdir(ns.site.content)
     for post in raw_posts:
-        print 'reading %s' % post
         container = NameSpace()
         container.meta = NameSpace()
 

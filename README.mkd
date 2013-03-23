@@ -34,6 +34,4 @@ View [demo](http://blog.xiaoba.me)
 ##
 CHANGE LOG
 
-v1.0.5: private post & post preview support.
-
-v1.0.4: custom theme support.
+v1.0.1: Support Sina Weibo "Associating Blog"
