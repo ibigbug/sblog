@@ -14,7 +14,6 @@ import ConfigParser
 
 
 def init():
-    print 'loading sblog..'
     print 'Sblog version %s' % version
     ns.root.path = os.path.dirname(__file__)
     ns.root.version = version
