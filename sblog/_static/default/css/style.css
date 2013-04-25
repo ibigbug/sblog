@@ -87,7 +87,7 @@ a:hover {
 
 @media screen and (max-width:480px) {
     .brand {
-        none;
+        display: none;
     }
     .wrap {
         margin-top: 25%;
