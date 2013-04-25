@@ -92,9 +92,9 @@ a:hover {
     .brand {
         margin-right: 50%;
         border-bottom: 1px solid #eee;
-        box-shadow: 0 1px #ccc;
+        box-shadow: 0 1px 1px #ddd;
     }
     .wrap {
-        margin-top: 20%;
+        margin-top: 25%;
     }
 }
