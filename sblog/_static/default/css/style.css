@@ -86,8 +86,13 @@ a:hover {
 }
 
 @media screen and (max-width:480px) {
+    #header {
+        height: auto;
+    }
     .brand {
-        margin-right: 5%;
+        margin-right: 50%;
+        border-bottom: 1px solid #eee;
+        box-shadow: 0 1px #ccc;
     }
     .wrap {
         margin-top: 20%;
