@@ -34,4 +34,5 @@ View [demo](http://blog.xiaoba.me)
 ##
 CHANGE LOG
 
+v1.0.2: Mobile Phone Compatible   
 v1.0.1: Support Sina Weibo "Associating Blog"

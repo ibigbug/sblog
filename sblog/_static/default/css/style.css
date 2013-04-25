@@ -30,7 +30,7 @@ body {
 }
 
 #nav li {
-    margin-right: 20px;
+    margin-right: 3.5%;
 }
 #nav a {
     border: none;
@@ -46,6 +46,7 @@ body {
     margin: 0 auto;
     text-align: left;
     margin-top: 120px;
+    padding: 6px 14px;
 }
 .entry-content {
     margin-bottom: 40px;
@@ -82,4 +83,13 @@ a:hover {
     -webkit-transition: color 0.5s ease;
     -moz-transition: color 0.5s ease;
     transition: color 0.5s ease;
+}
+
+@media screen and (max-width:480px) {
+    .brand {
+        margin-right: 5%;
+    }
+    .wrap {
+        margin-top: 20%;
+    }
 }
