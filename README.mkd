@@ -31,8 +31,13 @@ demo:
 View [demo](http://blog.xiaoba.me)
 
 
-##
-CHANGE LOG
+##LICENSE
+
+The MIT License
+
+Copyright (c) 2012 Ben Tadiar
+
+##CHANGE LOG
 
 v1.0.2: Mobile Phone Compatible   
 v1.0.1: Support Sina Weibo "Associating Blog"
