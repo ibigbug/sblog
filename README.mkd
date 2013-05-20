@@ -35,7 +35,7 @@ View [demo](http://blog.xiaoba.me)
 
 The MIT License
 
-Copyright (c) 2012 Ben Tadiar
+Copyright (c) 2012 Yuwei Ba
 
 ##CHANGE LOG
 
