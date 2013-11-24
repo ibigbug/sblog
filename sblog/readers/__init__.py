@@ -47,7 +47,13 @@ def render(ns, NameSpace):
             container.meta.tags = None
         finally:
             if container.meta.tags:
-                container.meta.tags = list(set(container.meta.tags))
+                ns.context.tags = dict(
+                    (t, []) for t in container.meta.tags
+                    if t not in ns.context.tags)
+                container.meta.tags = [t.strip() for t in
+                                       set(container.meta.tags)]
+                for t in container.meta.tags:
+                    ns.context.tags[t].append(container)
         #date meta
         year, month, day = container.meta.date.split('-')
         month = month if len(month) == 2 else '0' + month

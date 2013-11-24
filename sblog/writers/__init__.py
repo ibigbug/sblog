@@ -17,6 +17,8 @@ def write(ns):
     index_tpl = jinja.get_template('index.html')
     post_tpl = jinja.get_template('post.html')
     feed_tpl = jinja.get_template('feed.xml')
+    tag_tpl = jinja.get_template('tag.html')
+
     #write index.html
     index = index_tpl.render(
         site=ns.site,
@@ -48,6 +50,19 @@ def write(ns):
     desti = os.path.join(rss, 'index.xml')
     f = open(desti, 'w')
     f.write(feed.encode('utf-8'))
+    f.close()
+
+    #domain.com/tag/
+    tag_html = tag_tpl.render(
+        site=ns.site,
+        tags=ns.context.tags
+    )
+    tag = os.path.join(ns.site.deploy, 'tag')
+    if not os.path.exists(tag):
+        os.mkdir(tag)
+    desti = os.path.join(tag, 'index.html')
+    f = open(desti, 'w')
+    f.write(tag_html.encode('utf-8'))
     f.close()
 
     #write all posts

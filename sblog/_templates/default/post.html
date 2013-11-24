@@ -15,6 +15,14 @@
     <div class="entry-content">
         {{ post.content }}
     </div>
+    {% if post.meta.tags %}
+    <div class="entry-tags">
+        <span>Tags:</span>
+        {% for t in post.meta.tags %}
+        <a class="tag-item" href="/tag/{{ t }}">{{ t }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
     {% if context.disqus %}
     <div id="disqus_thread"></div>
     <script type="text/javascript">

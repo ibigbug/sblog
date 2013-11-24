@@ -68,6 +68,22 @@ body {
     display: block;
     margin-bottom: 10px;
 }
+.entry-tags {
+    border-top: #ddd double;
+    border-bottom: #ddd double;
+    margin-bottom: 20px;
+}
+.tag-item {
+    margin-left: 10px;
+    border: none;
+}
+.tag-item:after {
+    content: '//';
+    margin-left: 10px;
+}
+.tag-item:last-child:after {
+    content: '';
+}
 .end {
     text-align: center;
     color: #aaa;

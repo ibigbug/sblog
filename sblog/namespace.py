@@ -24,3 +24,4 @@ ns.context = NameSpace()
 ns.context.folder = []
 ns.context.posts = []
 ns.context.pages = []
+ns.context.tags = {}
