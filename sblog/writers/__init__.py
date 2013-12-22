@@ -17,7 +17,7 @@ def write(ns):
     index_tpl = jinja.get_template('index.html')
     post_tpl = jinja.get_template('post.html')
     feed_tpl = jinja.get_template('feed.xml')
-    tag_tpl = jinja.get_template('tag.html')
+    tag_tpl = jinja.get_template('tags.html')
 
     #write index.html
     index = index_tpl.render(
