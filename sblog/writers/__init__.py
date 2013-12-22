@@ -55,6 +55,7 @@ def write(ns):
     #domain.com/tag/
     tag_html = tag_tpl.render(
         site=ns.site,
+        context=ns.context,
         tags=ns.context.tags
     )
     tag = os.path.join(ns.site.deploy, 'tag')

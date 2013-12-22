@@ -42,7 +42,8 @@ def render(ns, NameSpace):
         container.meta.link = os.path.splitext(post)[0] + '.html'
         #tag meta
         try:
-            container.meta.tags = container.meta.tags.split(',')
+            container.meta.tags = map(lambda t: t.strip(),
+                                      container.meta.tags.split(','))
         except AttributeError:
             container.meta.tags = None
         finally:
@@ -50,7 +51,7 @@ def render(ns, NameSpace):
                 ns.context.tags = dict(
                     (t, []) for t in container.meta.tags
                     if t not in ns.context.tags)
-                container.meta.tags = [t.strip() for t in
+                container.meta.tags = [t for t in
                                        set(container.meta.tags)]
                 for t in container.meta.tags:
                     ns.context.tags[t].append(container)
