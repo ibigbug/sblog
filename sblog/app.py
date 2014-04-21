@@ -32,7 +32,7 @@ class SBlog(object):
         SRC_FOLDER='src',
         DST_FOLDER='dst',
         READERS='',
-        WRITERS='',
+        WRITERS='IndexWriter, PostWriter',
         THEME='default',
 
         SITE_NAME='SBlog Demo',
@@ -53,8 +53,8 @@ class SBlog(object):
         self.cwd = cwd
 
         self.config = self.make_config()
-        self.readers = self.config.READERS.split(',')
-        self.writers = self.config.WRITERS.split(',')
+        self.readers = map(lambda x: 'readers.' + x.strip(), self.config.READERS.split(','))
+        self.writers = map(lambda x: 'writers.' + x.strip(), self.config.WRITERS.split(','))
         self.src_folder = self.config['SRC_FOLDER']
         self.dst_folder = self.config['DST_FOLDER']
         self.g = self.make_global()
@@ -89,8 +89,8 @@ class SBlog(object):
             self.logger.info('Environment already exists.')
 
     def run(self):
-        self._load_readers().read()
-        self._load_writers().write()
+        self._load_readers()
+        self._load_writers()
         self.done()
 
     @staticmethod

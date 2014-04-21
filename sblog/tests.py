@@ -41,13 +41,16 @@ def reader_test():
     from sblog.readers.markdown import MarkDownReader
     reader = MarkDownReader(app)
     reader.run()
-    app.logger.debug(app.posts)
 
 
 def writer_test():
+    from sblog.writers.index import IndexWriter
     from sblog.writers.post import PostWriter
-    writer = PostWriter(app)
-    writer.run()
+
+    iw = IndexWriter(app)
+    iw.run()
+    pw = PostWriter(app)
+    pw.run()
 
 
 def clean():

@@ -34,6 +34,19 @@ class Writer(object):
     def run(self):
         raise NotImplementedError
 
+    def get_post_by_year(self, year):
+        for p in self.app.posts:
+            if p.get_meta().get('year') == year:
+                yield p
+
+    def get_all_year(self):
+        l = []
+        for p in self.app.posts:
+            if p in l:
+                continue
+            l.append(p)
+            yield p.get_meta().get('year')
+
 
 class ThemeNotFoundException(Exception):
     def __init__(self, value):
