@@ -1,8 +1,8 @@
 from __future__ import print_function
 
 import os
-from threading import Lock
 
+import __init__ as god
 from .config import Config, ConfigAttribute
 from .utils import import_string
 
@@ -33,10 +33,18 @@ class SBlog(object):
         DST_FOLDER='dst',
         READERS='',
         WRITERS='',
+        THEME='default',
+
+        SITE_NAME='SBlog Demo',
+        SITE_AUTHOR_NAME='ibigbug',
+        SITE_AUTHOR_EMAIL='i@xiaoba.me',
+        SITE_VERSION=god.__version__
     )
 
-    src_folder = default_config['SRC_FOLDER']
-    dst_folder = default_config['DST_FOLDER']
+    g = {}
+
+    src_folder = None
+    dst_folder = None
     posts = []
 
     def __init__(self, config_file=None, cwd=cwd):
@@ -47,6 +55,9 @@ class SBlog(object):
         self.config = self.make_config()
         self.readers = self.config.READERS.split(',')
         self.writers = self.config.WRITERS.split(',')
+        self.src_folder = self.config['SRC_FOLDER']
+        self.dst_folder = self.config['DST_FOLDER']
+        self.g = self.make_global()
 
         self._logger = None
         self.logger_name = self.__class__.__name__
@@ -62,6 +73,9 @@ class SBlog(object):
     def make_config(self):
         root_path = self.root_path
         return self.config_class(root_path, self.default_config)
+
+    def make_global(self):
+        return self.config.get_namespace('SITE_')
 
     def build_env(self):
         src_folder = os.path.join(self.cwd, self.src_folder)
@@ -79,8 +93,9 @@ class SBlog(object):
         self._load_writers().write()
         self.done()
 
+    @staticmethod
     def done(self):
-        msg = ('Done')
+        msg = 'Done'
         print(msg)
 
     def _load_readers(self):

@@ -65,3 +65,14 @@ class Config(dict):
         for key in dir(obj):
             if key.isupper():
                 self[key] = obj[key]
+
+    def get_namespace(self, namespace, lowercase=True):
+        rv = {}
+        for k, v in self.iteritems():
+            if not k.startswith(namespace):
+                continue
+            key = k[len(namespace):]
+            if lowercase:
+                key = key.lower()
+            rv[key] = v
+        return rv
