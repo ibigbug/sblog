@@ -36,10 +36,11 @@ class SBlog(object):
         WRITERS='IndexWriter, PostWriter',
         THEME='default',
 
+        SITE_BLOG_URL='http://127.0.0.1:8000',
         SITE_BLOG_NAME='SBlog Demo',
+        SITE_BLOG_VERSION=god.__version__,
         SITE_AUTHOR_NAME='ibigbug',
         SITE_AUTHOR_EMAIL='i@xiaoba.me',
-        SITE_BLOG_VERSION=god.__version__
     )
 
     g = Global()

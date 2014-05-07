@@ -87,3 +87,4 @@ if __name__ == '__main__':
     gene_src()
     reader_test()
     writer_test()
+    #clean()

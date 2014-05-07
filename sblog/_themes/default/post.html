@@ -1,1 +1,6 @@
 {% extends "layout.html" %}
+{% block main %}
+<h3>{{ post.meta.get('title') }}</h3>
+<p>Published on {{ post.meta.get('date') }} by {{ g.author_name }} tagged in {{ ','.join(post.meta.get('tags')) }}</p>
+{{ post.body }}
+{% endblock %}
