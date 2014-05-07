@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block main %}
+<h2>Tags</h2>
+{% for t in tags %}
+<h3 id="{{ t }}">{{ t }}</h3>
+{% for post in get_post_by_tag(t) %}
+<h4><a href="/{{ post.get_perm_link() }}">{{ post.get_title() }}</a></h4>
+{% endfor %}
+{% endfor %}
+{% endblock %}

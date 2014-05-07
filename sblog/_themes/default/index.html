@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block main %}
+<div class="wrap">
+    {% for year, posts in rv.iteritems() %}
+    <h2>
+        {{ year }}
+    </h2>
+    <div>
+        {% for post in posts%}
+        <h3><a href="/{{ post.get_perm_link() }}">{{ post.meta['title'] }}</a></h3>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
