@@ -1,5 +1,6 @@
 import os
 from ._base import Writer
+from ._base import PostExistsException
 
 
 class PostWriter(Writer):
@@ -18,6 +19,10 @@ class PostWriter(Writer):
 
             file_dir = os.path.dirname(file_path)
             if not os.path.isdir(file_dir):
-                os.makedirs(file_dir)
+                os.makedirs(file_dir, mode=0755)
+            if os.path.exists(file_path):
+                e = PostExistsException(file_path)
+                raise e
+
             with open(file_path, 'wb') as fd:
                 fd.write(self.render(self.template_name, post=p))

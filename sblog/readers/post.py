@@ -16,12 +16,17 @@ class Post(object):
         if fields_dict is not None:
             for key, value in fields_dict.iteritems():
                 setattr(self, key, value)
+        if self.meta.get('tags', False):
+            self.meta['tags'] = map(lambda t: t.strip(), self.meta['tags'].split(','))
 
     def set_meta(self, meta):
         self.meta = meta
 
     def get_meta(self):
         return self.meta
+
+    def get_title(self):
+        return self.meta['title']
 
     def set_body(self, body):
         self.body = body

@@ -18,7 +18,10 @@ class MarkDownReader(Reader):
     body_pattern = re.compile(ur'<p>.+?$')
 
     def run(self):
-        input_files = filter(lambda f: os.path.splitext(f)[-1] in self.__allow_suffix__, self.input_files)
+        input_files = filter(lambda f: (os.path.splitext(f)[-1] in self.__allow_suffix__) and
+                                       (not os.path.basename(f).startswith('_')),
+                             self.input_files)
+
         for f in input_files:
             parsed = self._parse_content(f)
             p = Post(parsed)
