@@ -74,3 +74,10 @@ class ImportStringError(ImportError):
                             exception.__class__.__name__, str(exception))
                 break
         ImportError.__init__(self, msg)
+
+
+class Global(dict):
+    def __getattr__(self, item):
+        return self[item]
+    def __setattr__(self, key, value):
+        self[key] = value

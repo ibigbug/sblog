@@ -5,15 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-<div class="header">
-Header
+<div class="sidebar-left">
+    {% include "sidebar-left.html" %}
 </div>
 <div class="main">
-Body
 {% block main %}{% endblock %}
 </div>
-<div class="footer">
-    Footer
+<div class="sidebar-right">
+    {% include "sidebar-right.html" %}
 </div>
 </body>
 </html>

@@ -5,6 +5,7 @@ import os
 import __init__ as god
 from .config import Config, ConfigAttribute
 from .utils import import_string
+from .utils import Global
 
 root_path = os.path.abspath(os.path.dirname(__file__))
 cwd = os.getcwd()
@@ -35,13 +36,13 @@ class SBlog(object):
         WRITERS='IndexWriter, PostWriter',
         THEME='default',
 
-        SITE_NAME='SBlog Demo',
+        SITE_BLOG_NAME='SBlog Demo',
         SITE_AUTHOR_NAME='ibigbug',
         SITE_AUTHOR_EMAIL='i@xiaoba.me',
-        SITE_VERSION=god.__version__
+        SITE_BLOG_VERSION=god.__version__
     )
 
-    g = {}
+    g = Global()
 
     src_folder = None
     dst_folder = None
@@ -57,10 +58,11 @@ class SBlog(object):
         self.writers = map(lambda x: 'writers.' + x.strip(), self.config.WRITERS.split(','))
         self.src_folder = self.config['SRC_FOLDER']
         self.dst_folder = self.config['DST_FOLDER']
-        self.g = self.make_global()
 
         self._logger = None
         self.logger_name = self.__class__.__name__
+
+        self.make_global()
 
     @property
     def logger(self):
@@ -75,7 +77,8 @@ class SBlog(object):
         return self.config_class(root_path, self.default_config)
 
     def make_global(self):
-        return self.config.get_namespace('SITE_')
+        _g = self.config.get_namespace('SITE_')
+        self.g.update(_g)
 
     def build_env(self):
         src_folder = os.path.join(self.cwd, self.src_folder)

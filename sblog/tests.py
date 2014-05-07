@@ -27,7 +27,7 @@ def gene_src():
     'content'
     )
 
-    src_files = ['post1.mkd', 'post2.mkd', 'sub1/post3.mkd', 'sub2/depth2/depth3/depth4/post4.mkd']
+    src_files = ['_profile.mkd', '_about.mkd', 'post1.mkd', 'post2.mkd', 'sub1/post3.mkd', 'sub2/depth2/depth3/depth4/post4.mkd']
     for f in src_files:
         f = os.path.join(app.cwd, app.src_folder, f)
         sub_dir = os.path.dirname(f)
@@ -46,7 +46,10 @@ def reader_test():
 def writer_test():
     from sblog.writers.index import IndexWriter
     from sblog.writers.post import PostWriter
+    from sblog.writers.meta import MetaWriter
 
+    mw = MetaWriter(app)
+    mw.run()
     iw = IndexWriter(app)
     iw.run()
     pw = PostWriter(app)
