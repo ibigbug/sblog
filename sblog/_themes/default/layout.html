@@ -6,14 +6,16 @@
     <link rel="stylesheet" href="/static/sblog.css" media="all">
 </head>
 <body class="yue">
-<div class="sidebar-left">
-    {% include "sidebar-left.html" %}
-</div>
-<div class="main">
-{% block main %}{% endblock %}
-</div>
-<div class="sidebar-right">
-    {% include "sidebar-right.html" %}
-</div>
+    <div class="flex-wrap">
+        <div class="flex-item sidebar-left">
+            {% include "sidebar-left.html" %}
+        </div>
+        <div class="flex-item main">
+            {% block main %}{% endblock %}
+        </div>
+        <div class="flex-item sidebar-right">
+            {% include "sidebar-right.html" %}
+        </div>
+    </div>
 </body>
 </html>
