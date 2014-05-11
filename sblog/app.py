@@ -14,9 +14,11 @@ cwd = os.getcwd()
 class SBlog(object):
 
     config_class = Config
+    config = None
 
     debug = ConfigAttribute('DEBUG')
 
+    _logger = None
     logger_name = ConfigAttribute('LOGGER_NAME')
 
     debug_log_format = (
@@ -39,6 +41,9 @@ class SBlog(object):
         SITE_BLOG_VERSION=god.__version__,
         SITE_AUTHOR_NAME='ibigbug',
         SITE_AUTHOR_EMAIL='i@xiaoba.me',
+
+        SITE_DISQUS_ID=None,
+        SITE_GOOGLE_ANALYTICS_ID=None,
     )
 
     g = Global()
@@ -56,7 +61,6 @@ class SBlog(object):
         self.src_folder = self.config['SRC_FOLDER']
         self.dst_folder = self.config['DST_FOLDER']
 
-        self._logger = None
         self.logger_name = self.__class__.__name__
 
         self.make_global()
@@ -71,7 +75,13 @@ class SBlog(object):
 
     def make_config(self):
         root_path = self.root_path
-        return self.config_class(root_path, self.default_config)
+        config = self.config_class(root_path, self.default_config)
+        config_file = os.path.join(self.cwd, 'sblog.json')
+        if os.path.exists(config_file):
+            print('Config file `sblog.json` founded, loading config...')
+            config.from_json_file(config_file)
+        return config
+
 
     def make_global(self):
         _g = self.config.get_namespace('SITE_')
@@ -104,10 +114,11 @@ class SBlog(object):
         mr.run()
 
     def _load_writers(self):
-        from sblog.writers.index import IndexWriter
-        from sblog.writers.post import PostWriter
-        from sblog.writers.meta import MetaWriter
-        from sblog.writers.tag import TagWriter
+        from sblog.writers import IndexWriter
+        from sblog.writers import PostWriter
+        from sblog.writers import MetaWriter
+        from sblog.writers import TagWriter
+        from sblog.writers import FeedWriter
 
         mw = MetaWriter(self)
         mw.run()
@@ -117,3 +128,5 @@ class SBlog(object):
         iw.run()
         pw = PostWriter(self)
         pw.run()
+        fw = FeedWriter(self)
+        fw.run()

@@ -42,8 +42,7 @@ class Config(dict):
             raise
 
         for key in obj.keys():
-            if key.isupper():
-                self[key] = obj[key]
+            self[key] = obj[key]
 
         return True
 

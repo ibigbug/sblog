@@ -1,7 +1,20 @@
 import os
 import shutil
+import datetime
 
 from jinja2 import Environment, PackageLoader
+
+
+def rfc3339_datetime_format(value):
+    formatt = '%Y-%m-%dT%H:%M:%SZ'
+    if not isinstance(value, datetime.datetime):
+        year, month, day = value.split('-')
+        value = datetime.datetime.utcnow().replace(
+            year=int(year),
+            month=int(month),
+            day=int(day)
+        )
+    return value.strftime(formatt)
 
 
 class Writer(object):
@@ -26,6 +39,7 @@ class Writer(object):
             return self._template_env
         jinja_env = Environment(loader=PackageLoader(package_name='sblog',
                                                      package_path=os.path.join('_themes/', self.app.config['THEME'])))
+        jinja_env.filters['atomdatetime'] = rfc3339_datetime_format
         self._template_env = jinja_env
         return jinja_env
 
@@ -35,7 +49,6 @@ class Writer(object):
         if os.path.isdir(dst):
             shutil.rmtree(dst)
         shutil.copytree(src, dst)
-
 
     def render(self, template_name, **kwargs):
         template = self.get_template_env().get_template(template_name)

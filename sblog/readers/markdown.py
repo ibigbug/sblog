@@ -6,11 +6,28 @@ from ._base import Reader
 from .post import Post
 
 import mistune
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import html
+
+
+class MyRenderer(mistune.Renderer):
+    def block_code(self, code, lang=None):
+        if not lang:
+            return '\n<pre><code>%s</code></pre>\n' % \
+                mistune.escape(code)
+        lexer = get_lexer_by_name(lang, stripall=True)
+        formatter = html()
+        return highlight(code, lexer, formatter)
+
 
 class MarkDownReader(Reader):
     """
     Parse *.mkd
     """
+    renderer = MyRenderer()
+    md = mistune.Markdown(renderer)
+
     __allow_suffix__ = ['.md', '.mkd', '.mdown', '.markdown']
 
     title_pattern = re.compile(ur'<h1>(.+?)</h1>')
@@ -33,7 +50,7 @@ class MarkDownReader(Reader):
         file_content = fd.read().decode('utf-8')
         fd.close()
 
-        marked = mistune.markdown(file_content)
+        marked = self.md.render(file_content)
         try:
             title = self.title_pattern.findall(marked)[0]
             meta = self.meta_pattern.findall(marked)
@@ -65,3 +82,5 @@ class MarkDownReader(Reader):
     def _parse_date(s):
         date = datetime.datetime.strptime(s, '%Y-%m-%d')
         return date
+
+

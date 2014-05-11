@@ -62,10 +62,12 @@ def reader_test():
 
 
 def writer_test():
-    from sblog.writers.index import IndexWriter
-    from sblog.writers.post import PostWriter
-    from sblog.writers.meta import MetaWriter
-    from sblog.writers.tag import TagWriter
+
+    from sblog.writers import IndexWriter
+    from sblog.writers import PostWriter
+    from sblog.writers import TagWriter
+    from sblog.writers import FeedWriter
+    from sblog.writers import MetaWriter
 
     mw = MetaWriter(app)
     mw.run()
@@ -75,7 +77,8 @@ def writer_test():
     iw.run()
     pw = PostWriter(app)
     pw.run()
-
+    fw = FeedWriter(app)
+    fw.run()
 
 
 def clean():
