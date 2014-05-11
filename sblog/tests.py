@@ -13,6 +13,7 @@ from sblog.app import SBlog
 
 app = None
 
+
 def make_env():
     global app
     app = SBlog(cwd=cwd)

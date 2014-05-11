@@ -32,8 +32,6 @@ class SBlog(object):
         PERM_LINK_STYLE='${year}/${month}/${day}/${title}.html',
         SRC_FOLDER='src',
         DST_FOLDER='dst',
-        READERS='',
-        WRITERS='IndexWriter, PostWriter',
         THEME='default',
 
         SITE_BLOG_URL='http://127.0.0.1:8000',
@@ -55,8 +53,6 @@ class SBlog(object):
         self.cwd = cwd
 
         self.config = self.make_config()
-        self.readers = map(lambda x: 'readers.' + x.strip(), self.config.READERS.split(','))
-        self.writers = map(lambda x: 'writers.' + x.strip(), self.config.WRITERS.split(','))
         self.src_folder = self.config['SRC_FOLDER']
         self.dst_folder = self.config['DST_FOLDER']
 
@@ -98,18 +94,26 @@ class SBlog(object):
         self.done()
 
     @staticmethod
-    def done(self):
+    def done():
         msg = 'Done'
         print(msg)
 
     def _load_readers(self):
-        readers = map(import_string, self.readers)
-        self._compose(readers)
+        from sblog.readers.markdown import MarkDownReader
+        mr = MarkDownReader(self)
+        mr.run()
 
     def _load_writers(self):
-        writers = map(import_string, self.writers)
-        self._compose(writers)
+        from sblog.writers.index import IndexWriter
+        from sblog.writers.post import PostWriter
+        from sblog.writers.meta import MetaWriter
+        from sblog.writers.tag import TagWriter
 
-    def _compose(app, l):
-        for r in l:
-            r(app).run()
+        mw = MetaWriter(self)
+        mw.run()
+        tw = TagWriter(self)
+        tw.run()
+        iw = IndexWriter(self)
+        iw.run()
+        pw = PostWriter(self)
+        pw.run()

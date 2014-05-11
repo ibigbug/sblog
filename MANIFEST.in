@@ -1,0 +1,2 @@
+recursive-include sblog/_themes *.*
+include README.mkd
