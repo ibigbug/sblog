@@ -1,7 +1,6 @@
 from setuptools import setup, find_packages
 from sblog import __version__ as version
 
-install_requires = open('requirements.txt').read().split('\n')
 
 setup(
     name='SBlog',
@@ -18,9 +17,12 @@ setup(
     license='MIT License',
 
     entry_points={
-        'console_scripts': ['sblog=sblog.bin']
+        'console_scripts': ['sblog = sblog.bin:main']
     },
-    install_requires=install_requires,
+    install_requires=[
+        'Jinja2',
+        'Pygments',
+    ],
     include_package_data=True,
     classifiers=[
         'Development Status :: 3 - Alpha',

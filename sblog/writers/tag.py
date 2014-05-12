@@ -19,10 +19,13 @@ class TagWriter(Writer):
     def calc_tags(self):
         rv = []
         for p in self.app.posts:
-            rv.extend(p.meta['tags'])
+            if p.meta.has_key('tags'):
+                rv.extend(p.meta.get('tags'))
         return set(rv)
 
     def get_post_by_tag(self, tag):
         for p in self.app.posts:
-            if tag in p.meta['tags']:
+            if not p.meta.has_key('tags'):
+                continue
+            if tag in p.meta.get('tags'):
                 yield p

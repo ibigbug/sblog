@@ -28,6 +28,7 @@ class Writer(object):
 
     def __init__(self, app):
         self.app = app
+        self.logger = app.logger
         self.dst_folder = os.path.join(app.cwd, app.dst_folder)
 
         self.template_env = self.get_template_env()
@@ -53,7 +54,7 @@ class Writer(object):
     def render(self, template_name, **kwargs):
         template = self.get_template_env().get_template(template_name)
         kwargs.update(dict(g=self.app.g))
-        return template.render(**kwargs)
+        return template.render(**kwargs).encode('utf-8')
 
     def run(self):
         raise NotImplementedError

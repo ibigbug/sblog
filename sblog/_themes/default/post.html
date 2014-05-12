@@ -4,9 +4,13 @@
 <div class="meta">Published on {{ post.meta.get('date') }} by {{ g.author_name }}</div>
 
 {{ post.body }}
+
+{% if post.meta.has_key('tags') %}
 <div class="tags">
 Tagged in: {{ ', '.join(post.meta.get('tags')) }}
 </div>
+{% endif %}
+
 {% if g.disqus_id %}
 <div class="disqus-area">
     <div id="disqus_thread"></div>

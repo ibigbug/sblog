@@ -22,7 +22,6 @@ def create_logger(app):
         def emit(self, record):
             StreamHandler.emit(self, record) if app.debug else None
 
-
     handler = DebugHandler()
     handler.setLevel(DEBUG)
     handler.setFormatter(Formatter(app.debug_log_format))

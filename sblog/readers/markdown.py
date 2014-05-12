@@ -8,7 +8,7 @@ from .post import Post
 import mistune
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
-from pygments.formatters import html
+from pygments.formatters.html import HtmlFormatter
 
 
 class MyRenderer(mistune.Renderer):
@@ -16,8 +16,11 @@ class MyRenderer(mistune.Renderer):
         if not lang:
             return '\n<pre><code>%s</code></pre>\n' % \
                 mistune.escape(code)
-        lexer = get_lexer_by_name(lang, stripall=True)
-        formatter = html()
+        try:
+            lexer = get_lexer_by_name(lang, stripall=True)
+        except:
+            lexer = get_lexer_by_name('javascript', stripall=True)
+        formatter = HtmlFormatter()
         return highlight(code, lexer, formatter)
 
 
@@ -31,8 +34,7 @@ class MarkDownReader(Reader):
     __allow_suffix__ = ['.md', '.mkd', '.mdown', '.markdown']
 
     title_pattern = re.compile(ur'<h1>(.+?)</h1>')
-    meta_pattern = re.compile(ur'<li>(.+?)</li>')
-    body_pattern = re.compile(ur'<p>.+?$')
+    meta_pattern = re.compile(ur'<li>(.+?)</li>', re.M)
 
     def run(self):
         input_files = filter(lambda f: (os.path.splitext(f)[-1] in self.__allow_suffix__) and
@@ -47,14 +49,26 @@ class MarkDownReader(Reader):
 
     def _parse_content(self, file_path):
         fd = open(file_path, 'rb')
-        file_content = fd.read().decode('utf-8')
-        fd.close()
 
-        marked = self.md.render(file_content)
+        header = ''
+        body = ''
+        recording = True
+
+        for line in fd:
+            if recording and line.startswith('---'):
+                recording = False
+            elif recording:
+                header += line.decode('utf-8')
+            else:
+                body += line.decode('utf-8')
+        fd.close()
+        header = mistune.markdown(header)
+        body = self.md.render(body)
+
         try:
-            title = self.title_pattern.findall(marked)[0]
-            meta = self.meta_pattern.findall(marked)
-            body = self.body_pattern.findall(marked)[0]
+            title = self.title_pattern.findall(header)[0]
+            meta = self.meta_pattern.findall(header)
+
         except:
             from ._base import MarkDownReaderException
             e = MarkDownReaderException('Post parse exception on file: %s' % file_path)
@@ -74,8 +88,7 @@ class MarkDownReader(Reader):
                 pass
         return dict(
             meta=meta_dict,
-            body=body,
-            marked=marked
+            body=body
         )
 
     @staticmethod

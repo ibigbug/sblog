@@ -29,7 +29,7 @@ class SBlog(object):
     )
 
     default_config = dict(
-        DEBUG=False,
+        DEBUG=True,
         LOGGER_NAME=None,
         PERM_LINK_STYLE='${year}/${month}/${day}/${title}.html',
         SRC_FOLDER='src',
