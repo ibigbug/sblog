@@ -107,7 +107,7 @@ class SBlog(object):
         print(msg)
 
     def _load_readers(self):
-        self.logger.info('Loading eaders...')
+        self.logger.info('Loading readers...')
         from sblog.readers.markdown import MarkDownReader
         mr = MarkDownReader(self)
         self.logger.info('MarkDownReader loaded.')
