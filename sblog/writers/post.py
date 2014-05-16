@@ -13,8 +13,6 @@ class PostWriter(Writer):
         self.write()
 
     def write(self):
-        logger = self.app.logger
-        logger.info('123')
         for p in self.posts:
             perm_link = p.get_perm_link()
             file_path = os.path.join(self.dst_folder, perm_link)

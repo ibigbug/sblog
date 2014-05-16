@@ -86,6 +86,7 @@ class MarkDownReader(Reader):
                 meta_dict[key.strip()] = value.strip()
             except:
                 pass
+        meta_dict.setdefault('file_name', os.path.basename(file_path))
         return dict(
             meta=meta_dict,
             body=body

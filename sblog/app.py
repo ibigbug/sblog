@@ -22,16 +22,14 @@ class SBlog(object):
     logger_name = ConfigAttribute('LOGGER_NAME')
 
     debug_log_format = (
-        '-' * 80 + '\n' +
-        '%(levelname)s in %(module)s [%(pathname)s:%(lineno)d]:\n' +
-        '%(message)s\n' +
+        '%(levelname)s: %(message)s\n' +
         '-' * 80
     )
 
     default_config = dict(
         DEBUG=True,
         LOGGER_NAME=None,
-        PERM_LINK_STYLE='${year}/${month}/${day}/${title}.html',
+        PERM_LINK_STYLE='${year}/${month}/${day}/${file_name}.html',
         SRC_FOLDER='src',
         DST_FOLDER='dst',
         THEME='default',
@@ -109,24 +107,40 @@ class SBlog(object):
         print(msg)
 
     def _load_readers(self):
+        self.logger.info('Loading eaders...')
         from sblog.readers.markdown import MarkDownReader
         mr = MarkDownReader(self)
+        self.logger.info('MarkDownReader loaded.')
+        self.logger.info('Readers loading finished.')
         mr.run()
+        self.logger.info('Running MarkDownReader.')
+        self.logger.info('All readers finished.')
 
     def _load_writers(self):
+        self.logger.info('Loading writers...')
         from sblog.writers import IndexWriter
+        self.logger.info('IndexWriter loaded.')
         from sblog.writers import PostWriter
+        self.logger.info('PostWriter loaded.')
         from sblog.writers import MetaWriter
+        self.logger.info('MetaWriter loaded.')
         from sblog.writers import TagWriter
+        self.logger.info('TagWriter loaded.')
         from sblog.writers import FeedWriter
+        self.logger.info('FeedWriter loaded.')
 
         mw = MetaWriter(self)
+        self.logger.info('Running MetaWriter.')
         mw.run()
         tw = TagWriter(self)
+        self.logger.info('Running TagWriter.')
         tw.run()
         iw = IndexWriter(self)
+        self.logger.info('Running IndexWriter.')
         iw.run()
         pw = PostWriter(self)
+        self.logger.info('Running PostWriter.')
         pw.run()
         fw = FeedWriter(self)
+        self.logger.info('Running FeedWriter.')
         fw.run()

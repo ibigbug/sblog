@@ -1,8 +1,8 @@
-.yue{font:400 18px/1.62 "Georgia","Xin Gothic","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft YaHei",sans-serif;color:#444443}
-.windows .yue{font-size:16px;font-family:"Georgia","Xin Gothic","Hiragino Sans GB","WenQuanYi Micro Hei","SimSun",sans-serif}
+.yue{font:400 18px/1.62 "Georgia","Xin Gothic","Hiragino Sans GB","Droid Sans Fallback","Microsoft YaHei",sans-serif;color:#444443}
+.windows .yue{font-size:16px;font-family:"Georgia","SimSun",sans-serif}
 .yue ::-moz-selection{background-color:rgba(0,0,0,0.2)}
 .yue ::selection{background-color:rgba(0,0,0,0.2)}
-.yue h1,.yue h2,.yue h3,.yue h4,.yue h5,.yue h6{font-family:"Georgia","Xin Gothic","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft YaHei","SimSun",sans-serif;color:#222223}
+.yue h1,.yue h2,.yue h3,.yue h4,.yue h5,.yue h6{font-family:"Georgia","Xin Gothic","Hiragino Sans GB","Droid Sans Fallback","Microsoft YaHei","SimSun",sans-serif;color:#222223}
 .yue h1{font-size:1.8em;margin:.67em 0}
 .yue > h1{margin-top:0;font-size:2em}
 .yue h2{font-size:1.5em;margin:.83em 0}
@@ -53,7 +53,8 @@ body{font-size:62.5;width:100%;height:100%;margin:0}
 .sidebar-left{position:fixed;height:100%;color:#fff;background-color:#69b076;padding:0 1%;max-width:20%;flex-grow:.2}
 .site-name a{text-decoration:none;color:#eee}
 .site-name a:hover{color:#fff}
-.main{flex-grow:2;padding:0 2.5%;margin-left:22%;background-color:#ffd}
+.main{flex-grow:2;padding:0 2.5%;margin-left:22%;max-width:55%;background-color:#ffd}
 .main .tags{border-top:.2em double #ccc}
+.main .meta{margin-bottom:1em;border-bottom:.1em dashed #ccc;display:inline-block}
 .disqus-area{margin-top:3em}
 .sidebar-right{flex-grow:.7;padding-left:2.5%}
