@@ -17,7 +17,8 @@ class Post(object):
             for key, value in fields_dict.iteritems():
                 setattr(self, key, value)
         if self.meta.get('tags', False):
-            self.meta['tags'] = set(map(lambda t: t.strip(), self.meta['tags'].split(',')))
+            self.meta['tags'] = list(set(
+                map(lambda t: t.strip(), self.meta['tags'].split(','))))
 
     def set_meta(self, meta):
         self.meta = meta

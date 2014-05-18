@@ -22,6 +22,7 @@ setup(
     install_requires=[
         'Jinja2',
         'Pygments',
+        'mistune'
     ],
     include_package_data=True,
     classifiers=[

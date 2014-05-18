@@ -61,16 +61,17 @@ class Writer(object):
 
     def get_post_by_year(self, year):
         for p in self.app.posts:
-            if p.get_meta().get('year') == year:
+            if p.meta.get('year') == year:
                 yield p
 
     def get_all_year(self):
-        l = []
+        rv = []
         for p in self.app.posts:
-            if p in l:
+            year = p.meta.get('year')
+            if year in rv:
                 continue
-            l.append(p)
-            yield p.get_meta().get('year')
+            rv.append(year)
+        return rv
 
 
 class ThemeNotFoundException(Exception):

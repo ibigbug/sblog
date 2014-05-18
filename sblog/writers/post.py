@@ -22,7 +22,9 @@ class PostWriter(Writer):
                 os.makedirs(file_dir, mode=0755)
             if os.path.exists(file_path):
                 self.logger.info('Post `%s` exists.' % file_path)
-                continue
-
-            with open(file_path, 'wb') as fd:
-                fd.write(self.render(self.template_name, post=p))
+                if self.app.config.get('FORCE_MODE'):
+                    self.logger.warn('FORCE_MODE: rewrited.')
+                    with open(file_path, 'wb') as fd:
+                        fd.write(self.render(self.template_name, post=p))
+                else:
+                    continue

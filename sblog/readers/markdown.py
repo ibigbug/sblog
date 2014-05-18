@@ -46,6 +46,7 @@ class MarkDownReader(Reader):
             p = Post(parsed)
             p.set_perm_link(self.calc_perm_link(p))
             self.app.posts.append(p)
+            self.app.posts.sort(key=lambda post: post.meta.get('_date'), reverse=True)
 
     def _parse_content(self, file_path):
         fd = open(file_path, 'rb')
@@ -80,6 +81,8 @@ class MarkDownReader(Reader):
                 key, value = m.split(':', 2)  # only * key: value will be saved as Post attribute
                 if key == 'date':
                     date = self._parse_date(value.strip())
+                    meta_dict['_date'] = date
+                    meta_dict['date'] = date.strftime('%Y-%m-%d')
                     meta_dict['year'] = date.year
                     meta_dict['month'] = date.month
                     meta_dict['day'] = date.day

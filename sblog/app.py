@@ -32,6 +32,7 @@ class SBlog(object):
         PERM_LINK_STYLE='${year}/${month}/${day}/${file_name}.html',
         SRC_FOLDER='src',
         DST_FOLDER='dst',
+        FORCE_MODE=True,
         THEME='default',
 
         SITE_BLOG_URL='http://127.0.0.1:8000',
