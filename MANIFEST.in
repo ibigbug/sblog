@@ -1,4 +1,2 @@
-recursive-include sblog/_templates *.*
-recursive-include sblog/_static *.*
-include sblog/config.ini
+recursive-include sblog/_themes *.*
 include README.mkd

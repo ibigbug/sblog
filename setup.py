@@ -1,32 +1,36 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-from setuptools import setup
-install_requires = ['markdown', 'Jinja2', 'pygments']
-
-
+from setuptools import setup, find_packages
 from sblog import __version__ as version
 
+
 setup(
-    name='sblog',
+    name='SBlog',
     version=version,
-    author='xiaoba',
+    author='Yuwei Ba',
     author_email='xiaobayuwei@gmail.com',
-    url='http://blog.xiaoba.me',
-    packages=['sblog', 'sblog.writers', 'sblog.readers'],
-    description='A lightweight static weblog generator',
+    url='blog.xiaoba.me',
+
+    packages=find_packages(),
+
+    keywords=('SBlog', 'markdown', 'Static Blog'),
+    description='A simple static blog generator.',
     long_description=open('README.mkd').read(),
-    license='BSD License',
+    license='MIT License',
+
     entry_points={
-        'console_scripts': ['sblog= sblog.main:main'],
+        'console_scripts': ['sblog = sblog.bin:main']
     },
-    install_requires=install_requires,
+    install_requires=[
+        'Jinja2',
+        'Pygments',
+        'mistune'
+    ],
     include_package_data=True,
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Console',
-        'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: MIT License',
         'Operating System :: POSIX',
         'Programming Language :: Python',
     ]
+
 )

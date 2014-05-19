@@ -1,0 +1,52 @@
+@import "yue"
+
+html
+  height 100%
+body
+  font-size 62.5
+  width 100%
+  height 100%
+  margin 0
+
+.flex-wrap
+  display flex
+  flex-wrap wrap
+  align-items flex-start
+  height 100%
+
+.sidebar-left
+  position fixed
+  height 100%
+  color #fff
+  background-color #69b076
+  padding 0 1%
+  max-width 20%
+  flex-grow 0.2
+
+.site-name a
+  text-decoration none
+  color #eee
+.site-name a:hover
+  color #fff
+
+.main
+  flex-grow 2
+  padding 0 2.5%
+  margin-left 22%
+  max-width 55%
+  background-color #ffd
+
+.main .tags
+  border-top .2em double #ccc
+
+.main .meta
+  margin-bottom 1em
+  border-bottom 0.1em dashed #ccc
+  display inline-block
+
+.disqus-area
+  margin-top 3em
+
+.sidebar-right
+  flex-grow 0.7
+  padding-left 2.5%

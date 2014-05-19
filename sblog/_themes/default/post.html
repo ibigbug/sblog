@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block main %}
+<h3>{{ post.meta.get('title') }}</h3>
+<div class="meta">Published on {{ post.meta.get('date') }} by {{ g.author_name }}</div>
+
+{{ post.body }}
+
+{% if post.meta.has_key('tags') %}
+<div class="tags">
+Tagged in: {{ ', '.join(post.meta.get('tags')) }}
+</div>
+{% endif %}
+
+{% if g.disqus_id %}
+<div class="disqus-area">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = '{{ g.disqus_id }}';
+        var disqus_title = '{{ post.meta.get("title") }}';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>{{ g.blog_name }}</title>
+    <link href="{{ g.blog_url }}" />
+    <updated>{{ now | atomdatetime }}</updated>
+    <id>{{ g.blog_url }}</id>
+    {% for post in posts %}
+    <entry>
+        <title type="html"><![CDATA[{{ post.get_title() }}]]></title>
+        <author><name>{{ g.author_name }}</name><uri>{{  g.blog_url }}</uri></author>
+        <link href="{{ g.blog_url }}/{{ post.get_perm_link() }}"/>
+        <published>{{ post.meta.get('date') | atomdatetime }}</published>
+        <id>{{ g.blog_url }}/{{ post.get_perm_link() }}</id>
+        <content type="html" xml:base="{{ g.blog_url }}" xml:lang="en">
+            <![CDATA[ {{ post.body }} ]]>
+        </content>
+    </entry>
+    {% endfor %}
+</feed>
