@@ -20,11 +20,11 @@ markdown,ga,disqus are supported.
 
 demo:  
 <pre>
-    ======
-    title: hello world  
-    date: 0000-00-00   
-    folder: test  
-    ======
+    # hello world  
+
+    * date: 0000-00-00   
+    * folder: test  
+    --------
     content with markdown supporting  
     ~~~python  
     source code here  
@@ -45,6 +45,7 @@ Copyright (c) 2012 Yuwei Ba
 
 ##CHANGE LOG
 
+v2.0.0: Rebuild
 v1.0.2: Mobile Phone Compatible   
 v1.0.1: Support Sina Weibo "Associating Blog"
 
