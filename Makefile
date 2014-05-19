@@ -7,4 +7,4 @@ clean:
 	rm -rf build dist sblog.egg-info
 
 upload:
-	python setup.py sdist bdist_egg upload
+	python setup.py register sdist bdist_egg upload
