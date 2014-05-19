@@ -3,7 +3,7 @@ from sblog import __version__ as version
 
 
 setup(
-    name='SBlog',
+    name='sblog',
     version=version,
     author='Yuwei Ba',
     author_email='xiaobayuwei@gmail.com',
